@@ -95,7 +95,7 @@ namespace LogTagAutomationApp.Controllers
                 var pathToCurrentTestFolder = FolderController.CreateTestFolder(SessionController.MainOutputFolder, dateTested, currentLogger);
                 var pathToMasterTestFolder = SessionController.MainOutputFolder + "\\" + SessionController.TestsMasterFile;
 
-                // if some logic passes all the tests: ///////////////////////////////////////////////////////////////////////////////////
+                // if some logic passes all the tests: //////////////////////////////////////////////////////////////////////////////////
                 JSONWriteToFile.AppendTestToMasterFile(pathToMasterTestFolder, newTest);
 
                 // Copy files across. Add Dostmann and LTD filepaths to a single array.
