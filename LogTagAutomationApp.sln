@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogTagAutomationApp", "LogTagAutomationApp.csproj", "{30A56BD0-19D8-4533-BC3A-351CBFE1166F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{30A56BD0-19D8-4533-BC3A-351CBFE1166F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30A56BD0-19D8-4533-BC3A-351CBFE1166F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30A56BD0-19D8-4533-BC3A-351CBFE1166F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30A56BD0-19D8-4533-BC3A-351CBFE1166F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {14372FD6-14E9-46D5-918F-2336DE48EF6C}
+	EndGlobalSection
+EndGlobal

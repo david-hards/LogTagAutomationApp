@@ -1,0 +1,382 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LogTagIO30</name>
+    </assembly>
+    <members>
+        <member name="T:LogTag.SDK.LogTagIO.Statistics">
+            <summary>
+            Statistics class which is used to hold statistics about a set of LogTag readings            
+            </summary>
+        </member>
+        <member name="F:LogTag.SDK.LogTagIO.Statistics.StartIndex">
+            <summary>
+            StartIndex - index of reading used first in this calculation
+            </summary>
+        </member>
+        <member name="F:LogTag.SDK.LogTagIO.Statistics.EndIndex">
+            <summary>
+            EndIndex - index of reading used last in this calculation
+            </summary>
+        </member>
+        <member name="F:LogTag.SDK.LogTagIO.Statistics.BelowAlert">
+            <summary>
+            BelowAlert - time span below low alarm level
+            </summary>
+        </member>
+        <member name="F:LogTag.SDK.LogTagIO.Statistics.AboveAlert">
+            <summary>
+            AboveAlert - time span above high alarm level
+            </summary>
+        </member>
+        <member name="F:LogTag.SDK.LogTagIO.Statistics.WithinSpecs">
+            <summary>
+            WithinSpecs - time span within high and low alarm
+            </summary>
+        </member>
+        <member name="F:LogTag.SDK.LogTagIO.Statistics.PausedTimeSpan">
+            <summary>
+            PausedTimeSpan - time span of paused readings
+            </summary>
+        </member>
+        <member name="F:LogTag.SDK.LogTagIO.Statistics.NotValidatedTimeSpan">
+            <summary>
+            NotValidatedTimeSpan - time span of notvalidated readings
+            </summary>
+        </member>
+        <member name="F:LogTag.SDK.LogTagIO.Statistics.InvalidTimeSpan">
+            <summary>
+            InvalidTimeSpan - time span of invalid readings
+            </summary>
+        </member>
+        <member name="P:LogTag.SDK.LogTagIO.LogTagHandle.HandleID">
+            <summary>
+            InstanceID of the LogTagHandle, is auto incremented every time a LogTagHAndle constructor is called.
+            </summary>
+        </member>
+        <member name="P:LogTag.SDK.LogTagIO.LogTagHandle.HasFile">
+            <summary>
+            Indicates whether the LogTagHandle has been associated with a file. 
+            </summary>
+        </member>
+        <member name="P:LogTag.SDK.LogTagIO.LogTagHandle.Locked">
+            <summary>
+            Indicates whether the  LogTagHandle is currently busy with an operation and is unavailable to be called.
+            </summary>
+        </member>
+        <member name="P:LogTag.SDK.LogTagIO.LogTagHandle.FilePath">
+            <summary>
+            The name and path of any file which is currently associated with the LogTagHandle. 
+            </summary>
+        </member>
+        <member name="P:LogTag.SDK.LogTagIO.LogTagHandle.SelectionStart">
+            <summary>
+            The start datetime stored in an .sltd file. 
+            </summary>
+        </member>
+        <member name="P:LogTag.SDK.LogTagIO.LogTagHandle.SelectionEnd">
+            <summary>
+            The end datetime stored in an .sltd file. 
+            </summary>
+        </member>
+        <member name="P:LogTag.SDK.LogTagIO.LogTagHandle.SelectionFlags">
+            <summary>
+            Not used
+            </summary>
+        </member>
+        <member name="P:LogTag.SDK.LogTagIO.LogTagHandle.ValidFirmware">
+            <summary>
+            Indicates if the firmware values retrieved are supported by this software version
+            </summary>
+        </member>
+        <member name="P:LogTag.SDK.LogTagIO.LogTagHandle.CurrentScale">
+            <summary>
+            The current SENSOR_SCALE that is assigned to the data in the LogTagHandle.
+            </summary>
+        </member>        
+        <member name="M:LogTag.SDK.LogTagIO.LogTagIO.LT_OpenAccess">
+            <summary>
+            Creates new LogTag Handle for use with the various SDK Methods.
+            </summary>
+            <returns>New LogTagHandle</returns>
+        </member>
+        <member name="M:LogTag.SDK.LogTagIO.LogTagIO.LT_AddSignature(LogTag.SDK.LogTagIO.LogTagHandle,LogTag.SDK.LogTagIO.DigitalSignature)">
+            <summary>
+            Attaches a DigitalSignature to a LogTag File.
+            </summary>
+            <param name="Handle">The LogTagHandle which contains the file to receive the signature</param>
+            <param name="Signature">The Digital Signature Object to be attached to the file</param>
+            <returns>enum ERROR_CODES</returns>
+        </member>
+        <member name="M:LogTag.SDK.LogTagIO.LogTagIO.LT_AttachIO(LogTag.SDK.LogTagIO.LogTagHandle,LogTag.SDK.LogTagIO.PortInfo)">
+            <summary>
+            Attaches a communications resource to the LogTag Handle and opens it  for further communications.
+            </summary>
+            <param name="Handle">The LogTagHandle that the Port is to be attached to</param>
+            <param name="PortInfo">The Port information about the port which the LogTagHandle will be attached to, from LT_GetPortInfo</param>
+            <returns>enum ERROR_CODES</returns>
+        </member>
+        <member name="M:LogTag.SDK.LogTagIO.LogTagIO.LT_Close(LogTag.SDK.LogTagIO.LogTagHandle)">
+            <summary>
+            Closes the LogTag Handle, it can no longer be used and will be discarded.
+            </summary>
+            <param name="Handle">The LogTagHandle to be closed</param>
+        </member>
+        <member name="M:LogTag.SDK.LogTagIO.LogTagIO.LT_CloseIO(LogTag.SDK.LogTagIO.LogTagHandle)">
+            <summary>
+            Closes the Communication Port attached to the LogTagHandle.
+            The Port cannot be used again till OpenIO has been called on the Handle.
+            </summary>
+            <param name="Handle">The LogTagHandle which has attached the port which is to be closed</param>
+        </member>
+        <member name="M:LogTag.SDK.LogTagIO.LogTagIO.LT_GenerateCustomStats(LogTag.SDK.LogTagIO.LogTagHandle,LogTag.SDK.LogTagIO.ProductInfo@,System.Boolean,System.UInt32,System.UInt32)">
+            <summary>
+            This method is used to calculate statistics between given indexes
+            </summary>
+            <param name="Handle">The LogTagHandle of the LogTag Product which is to be queried</param>
+            <param name="LogTagInfo">The ProductInfo Object which is to be populated with the Information Retrieved</param>
+            <param name="First">index of first reading</param>
+            <param name="Last">index of last reading</param>
+            <returns>enum ERROR_CODES</returns>
+        </member>
+        <member name="M:LogTag.SDK.LogTagIO.LogTagIO.LT_GenerateStatistics(LogTag.SDK.LogTagIO.LogTagHandle,LogTag.SDK.LogTagIO.ProductInfo@,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Double,System.Boolean)">
+            <summary>
+            This method is used to calculate the statistics set for a given set of readings, using the supplied user options
+            </summary>
+            <param name="Handle">The LogTagHandle of the LogTag Product which is to be queried</param>
+            <param name="LogTagInfo">The ProductInfo Object which is to be populated with the Information Retrieved</param>
+            <param name="Rated">If true limit to Product Rated, else limit to cal tables</param>
+            <param name="NotValidated">If true perform statistics calculations with Non Validated readings included</param>
+            <param name="Paused">If true perform statistics calculations with Paused readings included</param>
+            <param name="MKTConstant">The MKT constant to be used in calculating the MKT value</param>
+            <param name="IgnoreMarksInPreStart">Whether to ignore Prestart Readings when doing statistics calculations</param>
+            <param name="IgnoreMarks">Used in Multi-Chart to ignore marks when doing statistics calculations</param>
+            <returns>enum ERROR_CODES</returns>
+        </member>
+        <member name="M:LogTag.SDK.LogTagIO.LogTagIO.LT_GetData(LogTag.SDK.LogTagIO.LogTagHandle,LogTag.SDK.LogTagIO.ProductInfo@,LogTag.SDK.LogTagIO.SENSOR_SCALE)">
+            <summary>
+            This method is used to retrieve information about the connected LogTag product and any readings stored.
+            </summary>
+            <param name="Handle">The LogTagHandle of the LogTag Product which is to be queried</param>
+            <param name="LogTagInfo">The ProductInfo Object which is to be populated with the Information Retrieved</param>
+            <returns>enum ERROR_CODES</returns>
+        </member>
+        <member name="M:LogTag.SDK.LogTagIO.LogTagIO.LT_GetDaySummaryIsoTag(LogTag.SDK.LogTagIO.LogTagHandle,LogTag.SDK.LogTagIO.IsoTagDaySummary@)">
+            <summary>
+            This method retrieves the IsoTag Day Summary Information from the product
+            </summary>
+            <param name="Handle">The LogTagHandle of the LogTag Product which is to be queried</param>
+            <param name="DaySummary">The IsoTagDaySummary Object which is to be populated with the Information Retrieved</param>
+            <returns>enum ERROR_CODES</returns>
+        </member>
+        <member name="M:LogTag.SDK.LogTagIO.LogTagIO.LT_GetDaySummaryTRID(LogTag.SDK.LogTagIO.LogTagHandle,LogTag.SDK.LogTagIO.TridDaySummary@)">
+            <summary>
+            This method retrieves the TRID Day Summary Information from the product
+            </summary>
+            <param name="Handle">The LogTagHandle of the LogTag Product which is to be queried</param>
+            <param name="DaySummary">The TridDaySummary Object which is to be populated with the Information Retrieved</param>
+            <returns>enum ERROR_CODES</returns>
+        </member>
+        <member name="M:LogTag.SDK.LogTagIO.LogTagIO.LT_GetDaySummaryTIC(LogTag.SDK.LogTagIO.LogTagHandle,LogTag.SDK.LogTagIO.TicDaySummary@)">
+            <summary>
+            This method retrieves the TIC Day Summary Information from the product
+            </summary>
+            <param name="Handle">The LogTagHandle of the LogTag Product which is to be queried</param>
+            <param name="DaySummary">The TicDaySummary Object which is to be populated with the Information Retrieved</param>
+            <returns>enum ERROR_CODES</returns>
+        </member>
+        <member name="M:LogTag.SDK.LogTagIO.LogTagIO.LT_GetErrorInfo(LogTag.SDK.LogTagIO.LogTagHandle,System.String@)">
+            <summary>
+            Returns the last ERROR that a handle had when executing a method.
+            </summary>
+            <param name="Handle">The LogTagHandle to get the error information from</param>
+            <param name="ErrorInfo">A String which may contain additional error information if available</param>
+            <returns>Last ERROR_CODE of the Handle which was returned</returns>
+        </member>
+        <member name="M:LogTag.SDK.LogTagIO.LogTagIO.LT_GetInfo(LogTag.SDK.LogTagIO.LogTagHandle,LogTag.SDK.LogTagIO.ProductInfo@,LogTag.SDK.LogTagIO.SENSOR_SCALE)">
+            <summary>
+            This method is used to retrieve information about the connected LogTag product.
+            </summary>
+            <param name="Handle">The LogTagHandle of the LogTag Product which is to be queried</param>
+            <param name="LogTagInfo">The ProductInfo Object which is to be populated with the Information Retrieved</param>
+            <returns>enum ERROR_CODES</returns>
+        </member>
+        <member name="M:LogTag.SDK.LogTagIO.LogTagIO.LT_GetInterface(LogTag.SDK.LogTagIO.LogTagHandle,LogTag.SDK.LogTagIO.InterfaceInfo@)">
+            <summary>
+            Get the Interface information about the attached LogTag Interface.
+            </summary>
+            <param name="Handle">The LogTagHandle from which to retrieve the Interface Information</param>
+            <param name="InterfaceInfo">The InterfaceInfo object to populate with the information</param>
+            <returns>enum ERROR_CODES</returns>
+        </member>
+        <member name="M:LogTag.SDK.LogTagIO.LogTagIO.LT_GetPortInfo(System.Collections.Generic.List{LogTag.SDK.LogTagIO.PortInfo},System.Int32@,LogTag.SDK.LogTagIO.COMMPORT_TYPE)">
+            <summary>
+            This will retrieve a list of possible connection ports that may be used to connect with LogTag products.
+            </summary>
+            <param name="PortInfo">A List of PortInfo Structures containing an entry for each Port found</param>
+            <param name="PortCount">The number of ports found and thus the number of PortInfo structures</param>
+            <param name="PortType">Specify the COMMPORT_TYPE Port Type to get the list of ports for, or use 0 to get all type of supported ports</param>
+            <returns>enum ERROR_CODES</returns>
+        </member>
+        <member name="M:LogTag.SDK.LogTagIO.LogTagIO.LT_GetPortInfo(System.Collections.Generic.List{LogTag.SDK.LogTagIO.PortInfo},System.Int32@,LogTag.SDK.LogTagIO.COMMPORT_TYPE,LogTag.SDK.LogTagIO.PORT_FLAGS)">
+            <summary>
+            Overloaded LT_GetPortInfo, can specify special USB driver flags.
+            </summary>
+            <param name="PortInfo">A List of PortInfo Structures containing an entry for each Port found</param>
+            <param name="PortCount">The number of ports found and thus the number of PortInfo structures</param>
+            <param name="PortType">Specify the COMMPORT_TYPE Port Type to get the list of ports for, or use 0 to get all type of supported ports</param>
+            <returns>enum ERROR_CODES</returns>
+            
+        </member>
+        <member name="M:LogTag.SDK.LogTagIO.LogTagIO.LT_GetPortType(LogTag.SDK.LogTagIO.COMMPORT_TYPE)">
+            <summary>
+            Indicates true when the library supports communication through a specific type of communications device.
+            </summary>
+            <param name="PortType">COMMPORT_TYPE Enum indicating the port type to check support for</param>
+            <returns>true if Port Type supported otherwise returns false</returns>
+        </member>
+        <member name="M:LogTag.SDK.LogTagIO.LogTagIO.LT_GetSDKMemory(LogTag.SDK.LogTagIO.LogTagHandle,System.UInt16,LogTag.SDK.LogTagIO.SDKMemory@)">
+            <summary>
+            This method can be used to retrieve a copy of the contents of the SDK memory that is currently allocated within a product.
+            </summary>
+            <param name="Handle">The LogTagHandle of the LogTag Product or file which is to be queried</param>
+            <param name="MemoryInfo">The SDKMemory Object with which to populate the data from</param>
+            <returns>enum ERROR_CODES</returns>
+        </member>
+        <member name="M:LogTag.SDK.LogTagIO.LogTagIO.LT_GetSignatures(LogTag.SDK.LogTagIO.LogTagHandle,System.Collections.Generic.List{LogTag.SDK.LogTagIO.DigitalSignature}@)">
+            <summary>
+            Returns a List of all the Digital Signatures that are attached to a File
+            </summary>
+            <param name="Handle">The Handle which has the file that the Signatures are to be retrieved from</param>
+            <param name="Signature">a List of Digital Signatures which is populated with data from the file if any data exists</param>
+            <returns>enum ERROR_CODES</returns>
+        </member>
+        <member name="M:LogTag.SDK.LogTagIO.LogTagIO.LT_HasLogs(LogTag.SDK.LogTagIO.LogTagHandle,System.Boolean@)">
+            <summary>
+            Checks if a LogTag Product has any logs available for download
+            </summary>
+            <param name="Handle">The LogTagHandle with the Product that is to be checked</param>
+            <param name="HasLogs">Is set to true if the Product has logs for download</param>
+            <returns>enum ERROR_CODES</returns>
+        </member>
+        <member name="M:LogTag.SDK.LogTagIO.LogTagIO.LT_Hibernate(LogTag.SDK.LogTagIO.LogTagHandle)">
+            <summary>
+            Puts a Logtag Product into Hibernation mode if it supports it and is in a state which allows hibernation
+            </summary>
+            <param name="Handle">The LogTagHandle with the Product that is to be hibernated</param>
+            <returns>enum ERROR_CODES</returns>
+        </member>
+        <member name="M:LogTag.SDK.LogTagIO.LogTagIO.LT_IsOpenIO(LogTag.SDK.LogTagIO.LogTagHandle)">
+            <summary>
+            Checks if the LogTagHandle has an Open Communication Port Attached to it.
+            </summary>
+            <param name="Handle">The LogTagHandle that the Port to be checked is to be attached to</param>
+            <returns>True if the Port is open for communication, else returns false</returns>
+        </member>
+        <member name="M:LogTag.SDK.LogTagIO.LogTagIO.LT_OpenIO(LogTag.SDK.LogTagIO.LogTagHandle)">
+            <summary>
+            Opens a Previously Attached Communications Port (LT_AttachIO) for communications. 
+            This should only be required if a LT_CloseIO Method was called previous.
+            </summary>
+            <param name="Handle">The LogTagHandle with the Port to be opened</param>
+            <returns>enum ERROR_CODES</returns>
+        </member>
+        <member name="M:LogTag.SDK.LogTagIO.LogTagIO.LT_OpenPath(LogTag.SDK.LogTagIO.LogTagHandle,System.String,LogTag.SDK.LogTagIO.SENSOR_SCALE)">
+            <summary>
+            This method is used to connect to a persistent storage system (file) rather than a physical product.
+            </summary>
+            <param name="Handle">The Handle to be used to hold the Product Data</param>
+            <param name="PathName">The Physical Path and File name of the File to be opened.</param>
+            <returns>enum ERROR_CODES</returns>
+        </member>
+        <member name="M:LogTag.SDK.LogTagIO.LogTagIO.LT_ReadFileData(LogTag.SDK.LogTagIO.LogTagHandle,System.Collections.Generic.List{System.Byte},LogTag.SDK.LogTagIO.SENSOR_SCALE,System.String)">
+            <summary>
+            This method is used to interpet an LTD file that is passed as a List of Byte Data and is an Alternative to OpenPath
+            </summary>
+            <param name="Handle">The Handle to be used to hold the Product Data</param>
+            <param name="FileBytes">The LTD File passed as a list of Byte Data</param>
+            <param name="TemperatureScale">Scale to retrieve the data in</param>
+            <param name="FileName">Name of file to record the open event against if User Server connected</param>
+            <returns>enum ERROR_CODES</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:LogTag.SDK.LogTagIO.LogTagIO.LT_ReadFileData(LogTag.SDK.LogTagIO.LogTagHandle,System.Byte[],LogTag.SDK.LogTagIO.SENSOR_SCALE,System.String)" -->
+        <member name="M:LogTag.SDK.LogTagIO.LogTagIO.LT_ResetAuthorisation(System.String,System.String@)">
+            <summary>
+            This method can be used to pass a valid LogTag Preset authorisation code to the SDK.
+            </summary>
+            <param name="authorisationCode">The authorisation code.</param>
+            <param name="result">The result of validating the code.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LogTag.SDK.LogTagIO.LogTagIO.LT_ResetData(LogTag.SDK.LogTagIO.LogTagHandle)">
+            <summary>
+            The next request for LogTag product information will be retrieved from the LogTag product instead of from the cache.
+            </summary>
+            <param name="Handle">The LogTagHandle of the LogTag Product from which the information is to be retrieved</param>
+            <returns>enum ERROR_CODES</returns>
+        </member>
+        <member name="M:LogTag.SDK.LogTagIO.LogTagIO.LT_SaveData(LogTag.SDK.LogTagIO.LogTagHandle,System.String)">
+            <summary>
+            Save the Handle's logger information into an LTD file
+            </summary>
+            <param name="Handle">The LogTagHandle whose productdata is to be saved as an LTD file</param>
+            <param name="PathName">The fully defined pathname and filename of the LTD file to save (including filename and extension)</param>
+            <returns>enum ERROR_CODES</returns>
+        </member>
+        <member name="M:LogTag.SDK.LogTagIO.LogTagIO.LT_SetInfo(LogTag.SDK.LogTagIO.LogTagHandle,LogTag.SDK.LogTagIO.ProductInfo)">
+            <summary>
+            This method is used to Configure a LogTag Product ready to be used, for example by setting it up to Record a specific number of readings and/or setting the alarm values. 
+            </summary>
+            <param name="Handle"></param>
+            <param name="LogTagInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LogTag.SDK.LogTagIO.LogTagIO.LT_SetInterfaceSpeed(LogTag.SDK.LogTagIO.LogTagHandle,LogTag.SDK.LogTagIO.INTERFACE_SPEED)">
+            <summary>
+            Sets the Interface Speed to a new Baud Rate Specified by the INTREFACE_SPEED
+            </summary>
+            <param name="Handle">The LogTagHandle that the Interface is attached to whose Baud Rate is to be changed</param>
+            <param name="InterfaceSpeed">One of the Interface Speed Enums representing the Baud Rate</param>
+            <returns>enum ERROR_CODES</returns>
+        </member>
+        <member name="M:LogTag.SDK.LogTagIO.LogTagIO.LT_SetLEDMode(LogTag.SDK.LogTagIO.LogTagHandle,LogTag.SDK.LogTagIO.LED_MODE)">
+            <summary>
+            Sets the LEDMode of an Interface which has LEDs and supports the LEDMode command, will set the LED Mode every time a LT_GetInterface command is issued.
+            </summary>
+            <param name="Handle">Handle which has the Interface with LEDMode </param>
+            <param name="LEDMode">The LEDMode in which to place the device</param>
+            <returns>enum ERROR_CODES</returns>
+        </member>
+        <member name="M:LogTag.SDK.LogTagIO.LogTagIO.LT_SetSDKMemory(LogTag.SDK.LogTagIO.LogTagHandle,System.UInt16,LogTag.SDK.LogTagIO.SDKMemory@)">
+            <summary>
+            This method can be used to allocate an area of the products memory and upload freeform data into that area for a software developers own use. The data is allocated block sizes of 256 bytes and reduces available logging memory.
+            </summary>
+            <param name="Handle">The LogTagHandle of the LogTag Product which is to have the SDK Memory Allocated/Cleared</param>
+            <param name="MemoryInfo">The SDKMemory Object containing the memory to be uploaded</param>
+            <returns>enum ERROR_CODES</returns>
+        </member>
+        <member name="M:LogTag.SDK.LogTagIO.LogTagIO.LT_WriteFileData(LogTag.SDK.LogTagIO.LogTagHandle,System.Collections.Generic.List{System.Byte}@)">
+            <summary>
+            This method is used to create a List of Byte Data that can be stored as an LTD file and is an Alternative to SaveData
+            </summary>
+            <param name="Handle">The Handle that holds the Product that is to be saved as LTD File Bytes</param>
+            <param name="FileBytes">The LTD File ByteList to be populated with the Byte Data</param>
+            <returns>enum ERROR_CODES</returns>
+        </member>
+        <member name="M:LogTag.SDK.LogTagIO.LogTagIO.LT_WriteFileData(LogTag.SDK.LogTagIO.LogTagHandle,System.Byte[]@)">
+            <summary>
+            This method is used to create a List of Byte Data that can be stored as an LTD file and is an Alternative to SaveData
+            </summary>
+            <param name="Handle">The Handle that holds the Product that is to be saved as LTD File Bytes</param>
+            <param name="FileBytes">The LTD File ByteArray to be populated with the Byte Data</param>
+            <returns>enum ERROR_CODES</returns>
+        </member>
+        <member name="M:LogTag.SDK.LogTagIO.LogTagIO.LT_VerifyCalibration(LogTag.SDK.LogTagIO.LogTagHandle)">
+            <summary>
+            This method is used after a GetInfo has reported a calibration error to see if the software can fix the calibration table.
+            </summary>
+            <param name="Handle">The Handle that holds the Product that is to checked if it can be fixed</param>
+            <returns>enum ERROR_CODES, SUCCESS indicates that the Calibration has been verified as fixed.</returns> 
+        </member>        
+    </members>
+</doc>

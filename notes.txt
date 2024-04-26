@@ -1,0 +1,75 @@
+Open the app
+
+Main Functions:
+- Start new Test Batch
+	- Date Autofill to yesterday and manually confirm?
+	- Input name of tester
+	x Drag dostmann
+	- Check if dostmann is null
+	- ??? Check if logger type is correct???
+	- ??? Can logger type be determined by LTD info???
+	- Drag in one OR MORE LTD files - do i drag them all in then process, or process one by one?
+	- Check if LTD files are null
+	- Confirm when max files reached, click next
+
+- Create test
+	- Check if folder for current day exists in file structure
+	- Create if false
+	- Create new test folder
+	- Copy .dbf from file location to new folder
+	- Copy ltd files from location to new folder
+	- Use FolderController
+	
+- Search previous tests
+	- Search by day
+	- Search by logger type
+	- Search by serial
+	- Search by fail
+	- List all?
+
+- Run comparison
+	- Add dostmann to array/kvp
+	- Foreach logger:
+		- Create new logger object
+		- Add data to kvp
+		- Do I want dostmann data added to each logger, or just to the days tests?
+		  Probably the day, doesn't have to be saved.
+		- Compare timestamps and temps at the timestamps - 59 secs OR whatever the time delay is - can get from logger?
+		- Pass or fail
+
+- Save data
+	- Create new folder with days date (DONE)
+	- Add dostmann to folder
+	- Add LTD files to folder
+	- Save day summary to generic text file, excel file? Contains date, tester, logger types, serials, result as json object
+
+
+TODO:
+- Add LTD drag and drop logic in ucStartTest(DONE)
+- Add dropbox logic for loggers in ucStartTest (DONE)
+- Default username not writing to JSON in FileController
+- ReadLastLoggedInDate when app loads
+- Load tests when app loads (DONE)
+- Add Logger subtypes with temp parameters or remove min and max temp entirely as they arent needed?
+- Remove top line of Dostmann before processing
+- When create test page comes up, empty all fields if possible without fucking the designer again
+- !!!!!!Add dostmann array to test!!!!!! (DONE)
+- Check if other default settings are needed, ie lastLoggedIn
+
+COULD TODO:
+- Add option to upload rather than drag and drop dostmann / LTD files (NOT NEEDED)
+- Switch labels to MessageBoxes (DONE)
+
+DRAWBACKS:
+- Can't test multiple models at the same time, too much entanglement imo
+
+
+
+
+icon back <a target="_blank" href="https://icons8.com/icon/40217/back">Back</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+
+
+
+Dostman:	string, string
+Logger:		int,	float
+LTD:		?		?

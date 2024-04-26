@@ -1,0 +1,40 @@
+{
+  "Loggers": [
+    {
+      "Model": "UTRED",
+      "SerialNumber": "SN001",
+      "BatchNumber": "B001",
+      "IsHumidity": false,
+      "IsExternal": false,
+      "MinTemp": -30,
+      "MaxTemp": 60
+    },
+    {
+      "Model": "SRIL",
+      "SerialNumber": "SN002",
+      "BatchNumber": "B002",
+      "IsHumidity": false,
+      "IsExternal": false,
+      "MinTemp": -30,
+      "MaxTemp": 60
+    },
+    {
+      "Model": "UHADO",
+      "SerialNumber": "SN003",
+      "BatchNumber": "B003",
+      "IsHumidity": true,
+      "IsExternal": true,
+      "MinTemp": -30,
+      "MaxTemp": 60
+    },
+    {
+      "Model": "EV-16",
+      "SerialNumber": "SN004",
+      "BatchNumber": "B004",
+      "IsHumidity": false,
+      "IsExternal": false,
+      "MinTemp": -30,
+      "MaxTemp": 60
+    }
+  ]
+}
