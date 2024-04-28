@@ -13,7 +13,6 @@ namespace LogTagAutomationApp.Controllers
         public static string TestsMasterFile { get; set; }
         // Stores the file location of the folder to output to tests into
         public static string MainOutputFolder { get; set; }
-        //public static string LoggerProfileFileName { get; set; }
 
 
         public static bool SetUsername(string username)

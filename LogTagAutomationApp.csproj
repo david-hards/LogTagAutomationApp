@@ -55,6 +55,7 @@
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\FolderController.cs" />
     <Compile Include="Controllers\LoggerController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\SessionController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\VisibilityController.cs" />

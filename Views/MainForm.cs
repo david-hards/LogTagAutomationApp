@@ -26,7 +26,7 @@ namespace LogTagAutomationApp.Views
             {
                 foreach (Test t in TestController.CompletedTests)
                 {
-                    Debug.WriteLine($"Tested on {t.DateOfTest} by {t.TesterName}");
+                    Debug.WriteLine($"Tested on {t.DateOfTest} by {t.TesterName}. Result was {t.Result}");
                 }
             }
         }

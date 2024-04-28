@@ -49,9 +49,11 @@ namespace LogTagAutomationApp.Controllers
                     DostmannResults = new Dictionary<int, float>()
                 };
 
-                // Rename the Dostmann file to a CSV and extract the information
+                // Rename the Dostmann file to a .csv and extract the information, then rename it back to .dbf
                 FileController.DostmannPath = FolderController.RenameToCSV(FileController.DostmannPath);
                 var dostmannResult = DostmannHandler.ExtractDostmann();
+                FileController.DostmannPath = FolderController.RenameToDBF(FileController.DostmannPath);
+
 
                 // Generate LTD and store in objects
                 var ltdResult = LTDHandler.ExtractLTDs();
@@ -70,6 +72,8 @@ namespace LogTagAutomationApp.Controllers
                     {
                         Logger newLogger = new Logger();
                         newLogger.SerialNumber = logger.SerialNumber;
+                        newLogger.Model = logger.DeviceModel.ToString();
+                        newLogger.BatchNumber = BatchNumber;
                         newTest.Loggers.Add(newLogger);
                     }
                     else
@@ -121,6 +125,15 @@ namespace LogTagAutomationApp.Controllers
         {
             ucTestResult.DisplayTestResults(test);
             VisibilityController.ShowUserControl("testResult");
+            foreach (var logger in LTDHandler.LoggersWithReadings)
+            {
+                Debug.WriteLine($"Count of {logger.SerialNumber} is {logger.Readings.Count}");
+                foreach(SensorReading reading in logger.Readings)
+                {
+                    Debug.WriteLine($"At {reading.TimeStamp}, temp was {reading.Reading[0]}");
+                }
+                Debug.WriteLine("\n\n\nNEW LOGGER\n\n\n");
+            }
         }
     }
 }

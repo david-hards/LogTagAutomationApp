@@ -28,36 +28,49 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblSettingsMain = new System.Windows.Forms.TableLayoutPanel();
+            this.pnlSettingsMain = new System.Windows.Forms.TableLayoutPanel();
+            this.btnTestResultBack = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnTestResultFinish = new System.Windows.Forms.Button();
-            this.btnTestResultBack = new System.Windows.Forms.Button();
             this.dataGridViewResults = new System.Windows.Forms.DataGridView();
             this.Setpoint = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Dostmann = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblSettingsMain.SuspendLayout();
+            this.pnlSettingsMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResults)).BeginInit();
             this.SuspendLayout();
             // 
-            // lblSettingsMain
+            // pnlSettingsMain
             // 
-            this.lblSettingsMain.ColumnCount = 3;
-            this.lblSettingsMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 55F));
-            this.lblSettingsMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.lblSettingsMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 55F));
-            this.lblSettingsMain.Controls.Add(this.btnTestResultBack, 0, 0);
-            this.lblSettingsMain.Controls.Add(this.label1, 1, 0);
-            this.lblSettingsMain.Controls.Add(this.btnTestResultFinish, 1, 2);
-            this.lblSettingsMain.Controls.Add(this.dataGridViewResults, 1, 1);
-            this.lblSettingsMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblSettingsMain.Location = new System.Drawing.Point(0, 0);
-            this.lblSettingsMain.Name = "lblSettingsMain";
-            this.lblSettingsMain.RowCount = 3;
-            this.lblSettingsMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 55F));
-            this.lblSettingsMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.lblSettingsMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.lblSettingsMain.Size = new System.Drawing.Size(984, 661);
-            this.lblSettingsMain.TabIndex = 0;
+            this.pnlSettingsMain.ColumnCount = 3;
+            this.pnlSettingsMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 55F));
+            this.pnlSettingsMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.pnlSettingsMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 55F));
+            this.pnlSettingsMain.Controls.Add(this.btnTestResultBack, 0, 0);
+            this.pnlSettingsMain.Controls.Add(this.label1, 1, 0);
+            this.pnlSettingsMain.Controls.Add(this.btnTestResultFinish, 1, 2);
+            this.pnlSettingsMain.Controls.Add(this.dataGridViewResults, 1, 1);
+            this.pnlSettingsMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlSettingsMain.Location = new System.Drawing.Point(0, 0);
+            this.pnlSettingsMain.Name = "pnlSettingsMain";
+            this.pnlSettingsMain.RowCount = 3;
+            this.pnlSettingsMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 55F));
+            this.pnlSettingsMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.pnlSettingsMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.pnlSettingsMain.Size = new System.Drawing.Size(984, 661);
+            this.pnlSettingsMain.TabIndex = 0;
+            // 
+            // btnTestResultBack
+            // 
+            this.btnTestResultBack.BackColor = System.Drawing.SystemColors.Control;
+            this.btnTestResultBack.BackgroundImage = global::LogTagAutomationApp.Properties.Resources.icons8_back_50;
+            this.btnTestResultBack.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnTestResultBack.FlatAppearance.BorderSize = 0;
+            this.btnTestResultBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTestResultBack.Location = new System.Drawing.Point(3, 3);
+            this.btnTestResultBack.Name = "btnTestResultBack";
+            this.btnTestResultBack.Size = new System.Drawing.Size(49, 49);
+            this.btnTestResultBack.TabIndex = 13;
+            this.btnTestResultBack.UseVisualStyleBackColor = false;
             // 
             // label1
             // 
@@ -83,19 +96,6 @@
             this.btnTestResultFinish.TabIndex = 12;
             this.btnTestResultFinish.Text = "Finish";
             this.btnTestResultFinish.UseVisualStyleBackColor = false;
-            // 
-            // btnTestResultBack
-            // 
-            this.btnTestResultBack.BackColor = System.Drawing.SystemColors.Control;
-            this.btnTestResultBack.BackgroundImage = global::LogTagAutomationApp.Properties.Resources.icons8_back_50;
-            this.btnTestResultBack.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnTestResultBack.FlatAppearance.BorderSize = 0;
-            this.btnTestResultBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTestResultBack.Location = new System.Drawing.Point(3, 3);
-            this.btnTestResultBack.Name = "btnTestResultBack";
-            this.btnTestResultBack.Size = new System.Drawing.Size(49, 49);
-            this.btnTestResultBack.TabIndex = 13;
-            this.btnTestResultBack.UseVisualStyleBackColor = false;
             // 
             // dataGridViewResults
             // 
@@ -123,11 +123,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.lblSettingsMain);
+            this.Controls.Add(this.pnlSettingsMain);
             this.Name = "ucTestResult";
             this.Size = new System.Drawing.Size(984, 661);
-            this.lblSettingsMain.ResumeLayout(false);
-            this.lblSettingsMain.PerformLayout();
+            this.pnlSettingsMain.ResumeLayout(false);
+            this.pnlSettingsMain.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResults)).EndInit();
             this.ResumeLayout(false);
 
@@ -135,7 +135,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel lblSettingsMain;
+        private System.Windows.Forms.TableLayoutPanel pnlSettingsMain;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnTestResultBack;
         private System.Windows.Forms.Button btnTestResultFinish;

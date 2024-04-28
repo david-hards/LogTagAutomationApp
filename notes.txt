@@ -55,6 +55,8 @@ TODO:
 - When create test page comes up, empty all fields if possible without fucking the designer again
 - !!!!!!Add dostmann array to test!!!!!! (DONE)
 - Check if other default settings are needed, ie lastLoggedIn
+- Be careful to wipe old data when going back pages etc, to avoid duplicating loggers in lists, readings etc
+- Add completed test to TestController Completed tests
 
 COULD TODO:
 - Add option to upload rather than drag and drop dostmann / LTD files (NOT NEEDED)
@@ -73,3 +75,16 @@ icon back <a target="_blank" href="https://icons8.com/icon/40217/back">Back</a> 
 Dostman:	string, string
 Logger:		int,	float
 LTD:		?		?
+
+
+/*
+ * Search for:
+ *  - Failed tests
+ *  - Specific models (to upper)
+ *  - Serial numbers
+ *  - Tester name
+ *  - Batch number
+ *  - Date of test
+ * 
+ * 
+ */
