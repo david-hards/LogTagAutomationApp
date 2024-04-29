@@ -49,11 +49,14 @@
             this.comboBoxSearchResult = new System.Windows.Forms.ComboBox();
             this.btnSearchClearAll = new System.Windows.Forms.Button();
             this.dataGridViewSearchResults = new System.Windows.Forms.DataGridView();
+            this.label8 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.pnlSearchBottom = new System.Windows.Forms.TableLayoutPanel();
             this.pnlSettingsMain.SuspendLayout();
             this.pnlSearchInner.SuspendLayout();
             this.pnlSearchControls.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSearchResults)).BeginInit();
+            this.pnlSearchBottom.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlSettingsMain
@@ -64,8 +67,8 @@
             this.pnlSettingsMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 55F));
             this.pnlSettingsMain.Controls.Add(this.btnSearchBack, 0, 0);
             this.pnlSettingsMain.Controls.Add(this.label1, 1, 0);
-            this.pnlSettingsMain.Controls.Add(this.btnSearchSubmit, 1, 2);
             this.pnlSettingsMain.Controls.Add(this.pnlSearchInner, 1, 1);
+            this.pnlSettingsMain.Controls.Add(this.pnlSearchBottom, 1, 2);
             this.pnlSettingsMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlSettingsMain.Location = new System.Drawing.Point(0, 0);
             this.pnlSettingsMain.Name = "pnlSettingsMain";
@@ -107,7 +110,7 @@
             this.btnSearchSubmit.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.btnSearchSubmit.FlatAppearance.BorderSize = 0;
             this.btnSearchSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearchSubmit.Location = new System.Drawing.Point(851, 624);
+            this.btnSearchSubmit.Location = new System.Drawing.Point(790, 3);
             this.btnSearchSubmit.Name = "btnSearchSubmit";
             this.btnSearchSubmit.Size = new System.Drawing.Size(75, 23);
             this.btnSearchSubmit.TabIndex = 12;
@@ -318,10 +321,37 @@
             this.dataGridViewSearchResults.Size = new System.Drawing.Size(567, 554);
             this.dataGridViewSearchResults.TabIndex = 1;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label8.Location = new System.Drawing.Point(20, 3);
+            this.label8.Margin = new System.Windows.Forms.Padding(20, 3, 20, 3);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(394, 28);
+            this.label8.TabIndex = 15;
+            this.label8.Text = "Double Click on a cell to open the File Location in Windows Explorer";
+            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // pnlSearchBottom
+            // 
+            this.pnlSearchBottom.ColumnCount = 2;
+            this.pnlSearchBottom.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.pnlSearchBottom.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.pnlSearchBottom.Controls.Add(this.btnSearchSubmit, 1, 0);
+            this.pnlSearchBottom.Controls.Add(this.label8, 0, 0);
+            this.pnlSearchBottom.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlSearchBottom.Location = new System.Drawing.Point(58, 624);
+            this.pnlSearchBottom.Name = "pnlSearchBottom";
+            this.pnlSearchBottom.RowCount = 1;
+            this.pnlSearchBottom.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.pnlSearchBottom.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.pnlSearchBottom.Size = new System.Drawing.Size(868, 34);
+            this.pnlSearchBottom.TabIndex = 15;
             // 
             // ucSearch
             // 
@@ -336,6 +366,8 @@
             this.pnlSearchControls.ResumeLayout(false);
             this.pnlSearchControls.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSearchResults)).EndInit();
+            this.pnlSearchBottom.ResumeLayout(false);
+            this.pnlSearchBottom.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -363,5 +395,7 @@
         private System.Windows.Forms.ComboBox comboBoxSearchResult;
         private System.Windows.Forms.Button btnSearchClearAll;
         private System.Windows.Forms.DataGridView dataGridViewSearchResults;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TableLayoutPanel pnlSearchBottom;
     }
 }

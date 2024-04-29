@@ -5,7 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace LogTagAutomationApp.Views
 {
@@ -25,6 +27,7 @@ namespace LogTagAutomationApp.Views
             dtPickerSearchDate.ShowCheckBox = true;
             dataGridViewSearchResults.RowHeadersVisible = false;
             dataGridViewSearchResults.CellFormatting += dataGridViewSearchResults_CellFormatting;
+            dataGridViewSearchResults.CellDoubleClick += DataGridViewSearchResults_CellDoubleClick;
 
         }
 
@@ -95,20 +98,35 @@ namespace LogTagAutomationApp.Views
         }
 
 
-        private void OpenSpecifiedFolder(string path)
+        private void OpenSpecifiedFolder(string model, string date)
         {
+            var filePath = Path.Combine(SessionController.MainOutputFolder, date, model);
             // Specify the folder path you want to open
-            string folderPath = path;
+            Debug.WriteLine(filePath);
 
             // Check if the folder exists before attempting to open it
-            if (System.IO.Directory.Exists(folderPath))
+            if (System.IO.Directory.Exists(filePath))
             {
                 // Open the folder using Process.Start
-                Process.Start(folderPath);
+                Process.Start(filePath);
             }
             else
             {
                 MessageBox.Show("Folder does not exist!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void DataGridViewSearchResults_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dataGridViewSearchResults.Rows[e.RowIndex];
+
+                string model = row.Cells["Model"].Value.ToString();
+                string date = row.Cells["DateOfTest"].Value.ToString();
+
+                // Call the method with model and date as arguments
+                OpenSpecifiedFolder(model, date);
             }
         }
 
@@ -169,8 +187,6 @@ namespace LogTagAutomationApp.Views
                 }
             }
         }
-
-
     }
 }
 
