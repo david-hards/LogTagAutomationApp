@@ -57,6 +57,9 @@ TODO:
 - Check if other default settings are needed, ie lastLoggedIn
 - Be careful to wipe old data when going back pages etc, to avoid duplicating loggers in lists, readings etc
 - Add completed test to TestController Completed tests
+- Fix persistence issues around going back, then reopening the same window and the same data still being displayed
+- When installed on a new pc will it default to david/desktop etc, or should i change it to working folder
+- Change Searches in search controller to be LIKE instead of exact
 
 COULD TODO:
 - Add option to upload rather than drag and drop dostmann / LTD files (NOT NEEDED)

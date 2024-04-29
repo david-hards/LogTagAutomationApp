@@ -35,21 +35,21 @@
             this.btnSearchSubmit = new System.Windows.Forms.Button();
             this.pnlSearchInner = new System.Windows.Forms.TableLayoutPanel();
             this.pnlSearchControls = new System.Windows.Forms.TableLayoutPanel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBoxSearchTester = new System.Windows.Forms.TextBox();
+            this.textBoxSearchSerial = new System.Windows.Forms.TextBox();
+            this.textBoxSearchBatch = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.textBoxSearchBatch = new System.Windows.Forms.TextBox();
-            this.textBoxSearchSerial = new System.Windows.Forms.TextBox();
-            this.textBoxSearchTester = new System.Windows.Forms.TextBox();
             this.comboBoxSearchModel = new System.Windows.Forms.ComboBox();
             this.dtPickerSearchDate = new System.Windows.Forms.DateTimePicker();
-            this.label7 = new System.Windows.Forms.Label();
             this.comboBoxSearchResult = new System.Windows.Forms.ComboBox();
             this.btnSearchClearAll = new System.Windows.Forms.Button();
             this.dataGridViewSearchResults = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.pnlSettingsMain.SuspendLayout();
             this.pnlSearchInner.SuspendLayout();
             this.pnlSearchControls.SuspendLayout();
@@ -98,7 +98,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(868, 55);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Search";
+            this.label1.Text = "Search for Logger";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnSearchSubmit
@@ -167,6 +167,47 @@
             this.pnlSearchControls.Size = new System.Drawing.Size(255, 554);
             this.pnlSearchControls.TabIndex = 0;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label7.Location = new System.Drawing.Point(3, 350);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(249, 20);
+            this.label7.TabIndex = 11;
+            this.label7.Text = "Test result:";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // textBoxSearchTester
+            // 
+            this.textBoxSearchTester.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxSearchTester.Location = new System.Drawing.Point(20, 238);
+            this.textBoxSearchTester.Margin = new System.Windows.Forms.Padding(20, 8, 20, 3);
+            this.textBoxSearchTester.Name = "textBoxSearchTester";
+            this.textBoxSearchTester.Size = new System.Drawing.Size(215, 20);
+            this.textBoxSearchTester.TabIndex = 8;
+            // 
+            // textBoxSearchSerial
+            // 
+            this.textBoxSearchSerial.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxSearchSerial.Location = new System.Drawing.Point(20, 98);
+            this.textBoxSearchSerial.Margin = new System.Windows.Forms.Padding(20, 8, 20, 3);
+            this.textBoxSearchSerial.Name = "textBoxSearchSerial";
+            this.textBoxSearchSerial.Size = new System.Drawing.Size(215, 20);
+            this.textBoxSearchSerial.TabIndex = 7;
+            // 
+            // textBoxSearchBatch
+            // 
+            this.textBoxSearchBatch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxSearchBatch.Location = new System.Drawing.Point(20, 168);
+            this.textBoxSearchBatch.Margin = new System.Windows.Forms.Padding(20, 8, 20, 3);
+            this.textBoxSearchBatch.Name = "textBoxSearchBatch";
+            this.textBoxSearchBatch.Size = new System.Drawing.Size(215, 20);
+            this.textBoxSearchBatch.TabIndex = 6;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -222,41 +263,6 @@
             this.label6.Text = "Test date:";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
-            // textBoxSearchBatch
-            // 
-            this.textBoxSearchBatch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxSearchBatch.Location = new System.Drawing.Point(20, 168);
-            this.textBoxSearchBatch.Margin = new System.Windows.Forms.Padding(20, 8, 20, 3);
-            this.textBoxSearchBatch.Name = "textBoxSearchBatch";
-            this.textBoxSearchBatch.Size = new System.Drawing.Size(215, 20);
-            this.textBoxSearchBatch.TabIndex = 6;
-            // 
-            // textBoxSearchSerial
-            // 
-            this.textBoxSearchSerial.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxSearchSerial.Location = new System.Drawing.Point(20, 98);
-            this.textBoxSearchSerial.Margin = new System.Windows.Forms.Padding(20, 8, 20, 3);
-            this.textBoxSearchSerial.Name = "textBoxSearchSerial";
-            this.textBoxSearchSerial.Size = new System.Drawing.Size(215, 20);
-            this.textBoxSearchSerial.TabIndex = 7;
-            // 
-            // textBoxSearchTester
-            // 
-            this.textBoxSearchTester.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxSearchTester.Location = new System.Drawing.Point(20, 238);
-            this.textBoxSearchTester.Margin = new System.Windows.Forms.Padding(20, 8, 20, 3);
-            this.textBoxSearchTester.Name = "textBoxSearchTester";
-            this.textBoxSearchTester.Size = new System.Drawing.Size(215, 20);
-            this.textBoxSearchTester.TabIndex = 8;
-            // 
             // comboBoxSearchModel
             // 
             this.comboBoxSearchModel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -277,17 +283,6 @@
             this.dtPickerSearchDate.Name = "dtPickerSearchDate";
             this.dtPickerSearchDate.Size = new System.Drawing.Size(215, 20);
             this.dtPickerSearchDate.TabIndex = 10;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7.Location = new System.Drawing.Point(3, 350);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(249, 20);
-            this.label7.TabIndex = 11;
-            this.label7.Text = "Test result:";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // comboBoxSearchResult
             // 
@@ -322,6 +317,11 @@
             this.dataGridViewSearchResults.Name = "dataGridViewSearchResults";
             this.dataGridViewSearchResults.Size = new System.Drawing.Size(567, 554);
             this.dataGridViewSearchResults.TabIndex = 1;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // ucSearch
             // 

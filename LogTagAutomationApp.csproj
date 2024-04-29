@@ -65,6 +65,7 @@
     <Compile Include="Models\JSONWriteToFile.cs" />
     <Compile Include="Models\Logger.cs" />
     <Compile Include="Models\LTDHandler.cs" />
+    <Compile Include="Models\Search.cs" />
     <Compile Include="Models\Test.cs" />
     <Compile Include="Resources\CustomColors.cs" />
     <Compile Include="Program.cs" />
