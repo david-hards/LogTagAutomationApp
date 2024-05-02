@@ -24,12 +24,12 @@ namespace LogTagAutomationApp.Models
 
                 if( result != ERROR_CODES.SUCCESS)
                 {
-                    Debug.WriteLine($"FAILURE AT: Logger at {path} was a {result}: {logger.DeviceModel}, serial {logger.SerialNumber}");
+                    Debug.WriteLine($"Logger at {path} was a {result}: {logger.DeviceModel}, serial {logger.SerialNumber}");
                     return ERROR_CODES.FAILURE;
                 }
                 else
                 {
-                    Debug.WriteLine($"SUCCESS AT: Logger at {path} was a {result}: {logger.DeviceModel}, serial {logger.SerialNumber}");
+                    Debug.WriteLine($"Logger at {path} was a {result}: {logger.DeviceModel}, serial {logger.SerialNumber}");
                     LoggersWithReadings.Add(logger);
                 }
             }

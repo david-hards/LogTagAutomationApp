@@ -10,7 +10,7 @@ namespace LogTagAutomationApp.Models
     {
         public static void AppendTestToMasterFile(string filePath, Test test)
         {
-            Debug.WriteLine($"JSONWriteToFile.AppendToMasterFile: Attempting to append test to file: {filePath}");
+            //Debug.WriteLine($"JSONWriteToFile.AppendToMasterFile: Attempting to append test to file: {filePath}");
 
             try
             {
@@ -19,7 +19,7 @@ namespace LogTagAutomationApp.Models
                 // Check if the file exists
                 if (File.Exists(filePath))
                 {
-                    Debug.WriteLine($"JSONWriteToFile.AppendToMasterFile: Existing file found. Attempting to read JSON.");
+                    //Debug.WriteLine($"AppendTestToMasterFile: Existing file found. Attempting to read JSON.");
 
                     // Read the existing JSON from file
                     string json = File.ReadAllText(filePath);
@@ -29,13 +29,13 @@ namespace LogTagAutomationApp.Models
 
                     if (testsList == null)
                     {
-                        Debug.WriteLine("JSONWriteToFile.AppendToMasterFile: Failed to deserialize JSON into List<Test>. Creating new list.");
+                        //Debug.WriteLine("AppendTestToMasterFile: Failed to deserialize JSON into List<Test>. Creating new list.");
                         testsList = new List<Test>();
                     }
                 }
                 else
                 {
-                    Debug.WriteLine($"JSONWriteToFile.AppendToMasterFile: File does not exist. Creating new file.");
+                    //Debug.WriteLine($"AppendTestToMasterFile: File does not exist. Creating new file.");
                     testsList = new List<Test>();
                 }
 
@@ -48,11 +48,11 @@ namespace LogTagAutomationApp.Models
                 // Write the JSON back to the file
                 File.WriteAllText(filePath, updatedJson);
 
-                Debug.WriteLine($"JSONWriteToFile.AppendToMasterFile: Test appended successfully.");
+                //Debug.WriteLine($"JSONWriteToFile.AppendToMasterFile: Test appended successfully.");
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"JSONWriteToFile.AppendToMasterFile: An error occurred: {ex.Message}");
+                Debug.WriteLine($"AppendTestToMasterFile: An error occurred: {ex.Message}");
             }
         }
     }

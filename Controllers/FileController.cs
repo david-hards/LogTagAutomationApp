@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Diagnostics;
 using System.IO;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace LogTagAutomationApp.Controllers
 {
@@ -48,6 +50,84 @@ namespace LogTagAutomationApp.Controllers
             catch
             {
                 Debug.WriteLine("Settings could not be loaded from settings.json");
+            }
+        }
+
+        public static bool SaveDefaultUsernameJson(string username)
+        {
+            try
+            {
+                // Check if the file exists
+                if (!File.Exists(settingsfilePath))
+                {
+                    Debug.WriteLine("settings.json file not found.");
+                    return false;
+                }
+
+                // Read the JSON file content
+                string json = File.ReadAllText(settingsfilePath);
+
+                // Parse the JSON content
+                JObject jsonObj = JObject.Parse(json);
+
+                // Update the defaultUserName attribute
+                jsonObj["defaultUserName"] = username;
+
+                // Convert the JObject back to a JSON string
+                string updatedJson = jsonObj.ToString();
+
+                // Write the updated JSON content back to the file
+                File.WriteAllText(settingsfilePath, updatedJson);
+
+                Debug.WriteLine("Default UserName overwritten successfully: " + username);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("SaveUserNameJsonError: " + ex.Message);
+                return false;
+            }
+        }
+
+        public static bool SetDefaultTestFolder(string path)
+        {
+            try
+            {
+                // Check if the file exists
+                if (!File.Exists(settingsfilePath))
+                {
+                    Debug.WriteLine("settings.json file not found.");
+                    return false;
+                }
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+
+                // Read the JSON file content
+                string json = File.ReadAllText(settingsfilePath);
+
+                // Parse the JSON content
+                JObject jsonObj = JObject.Parse(json);
+
+                // Update the defaultUserName attribute
+                jsonObj["mainOutputFolder"] = path;
+
+                // Convert the JObject back to a JSON string
+                string updatedJson = jsonObj.ToString();
+
+                // Write the updated JSON content back to the file
+                File.WriteAllText(settingsfilePath, updatedJson);
+
+                Debug.WriteLine("Default FilePath overwritten successfully: " + path);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("SaveUserNameJsonError: " + ex.Message);
+                return false;
             }
         }
     }

@@ -14,7 +14,7 @@ namespace LogTagAutomationApp.Controllers
         /// </summary>
         public static void LoadLoggerProfilesFromFile()
         {
-            Debug.WriteLine("LoadLoggerProfilesFromFile");
+            //Debug.WriteLine("LoadLoggerProfilesFromFile");
             LoggerProfiles = JSONReadFromFile.ReadLoggerProfilesFromFile();
         }
     }

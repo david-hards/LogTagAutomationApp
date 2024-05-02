@@ -21,7 +21,7 @@ namespace LogTagAutomationApp.Controllers
 
         public static void LoadPreviousTests()
         {
-            Debug.WriteLine("TestController.LoadPreviousTests");
+            //Debug.WriteLine("TestController.LoadPreviousTests");
             CompletedTests = JSONReadFromFile.ReadTestsFromFile();
         }
 
@@ -32,7 +32,7 @@ namespace LogTagAutomationApp.Controllers
 
         public static void CreateTest() // WRAP THE FILE CHANGING IN SUCCESS BOOLS SO FILES DONT GET RENAMED AND STAY THAT WAY
         {
-            Debug.WriteLine($"TestContoller.CreateTest");
+            //Debug.WriteLine($"TestContoller.CreateTest");
             try
             {
                 // Get test attributes and create folders
@@ -60,8 +60,8 @@ namespace LogTagAutomationApp.Controllers
 
                 //Create a Logger for every file dropped into the LTD drop box
                 //for (int i = 0; i < NumOfLoggers; i++)
-                Debug.WriteLine($"Number of loggers in LTDHandler.LoggerReadings is {LTDHandler.LoggersWithReadings.Count}");
-                Debug.WriteLine($"LTD Error code success: {ltdResult}");
+                Debug.WriteLine($"Number of loggers dropped into LTD textbox is {LTDHandler.LoggersWithReadings.Count}");
+                Debug.WriteLine($"LTD Read from File code success: {ltdResult}");
 
                 // Create a Logger for every file dropped into the LTD drop box
                 //for (int i = 0; i < LTDHandler.LoggersWithReadings.Count; i++)
@@ -91,7 +91,7 @@ namespace LogTagAutomationApp.Controllers
                 }
                 if (ltdResult != ERROR_CODES.SUCCESS)
                 {
-                    MessageBox.Show("There was an error extracting the Logger results from the .ltd file");
+                    MessageBox.Show("There was an error extracting the Logger results from the .ltd file\nMake sure all loggers are updated and supported.");
                     return;
                 }
 
@@ -127,12 +127,13 @@ namespace LogTagAutomationApp.Controllers
             VisibilityController.ShowUserControl("testResult");
             foreach (var logger in LTDHandler.LoggersWithReadings)
             {
-                Debug.WriteLine($"Count of {logger.SerialNumber} is {logger.Readings.Count}");
+                Debug.WriteLine("\nNEW LOGGER\n");
+                Debug.WriteLine($"Number of readings in {logger.SerialNumber} is {logger.Readings.Count}");
                 foreach(SensorReading reading in logger.Readings)
                 {
                     Debug.WriteLine($"At {reading.TimeStamp}, temp was {reading.Reading[0]}");
                 }
-                Debug.WriteLine("\n\n\nNEW LOGGER\n\n\n");
+                
             }
         }
     }

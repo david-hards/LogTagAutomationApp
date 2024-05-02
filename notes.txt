@@ -48,7 +48,7 @@ TODO:
 - Add LTD drag and drop logic in ucStartTest(DONE)
 - Add dropbox logic for loggers in ucStartTest (DONE)
 - Default username not writing to JSON in FileController
-- ReadLastLoggedInDate when app loads
+- ReadLastLoggedInDate when app loads (NOT NEEDED)
 - Load tests when app loads (DONE)
 - Add Logger subtypes with temp parameters or remove min and max temp entirely as they arent needed?
 - Remove top line of Dostmann before processing
@@ -60,6 +60,9 @@ TODO:
 - Fix persistence issues around going back, then reopening the same window and the same data still being displayed
 - When installed on a new pc will it default to david/desktop etc, or should i change it to working folder
 - Change Searches in search controller to be LIKE instead of exact
+- Test creation adds to master file but does not update current tests on display
+- CHECK ONLY THE TIMESTAMP, the rest is irrelevant
+- Create Temp Variance parameters in loggers.json
 
 COULD TODO:
 - Add option to upload rather than drag and drop dostmann / LTD files (NOT NEEDED)

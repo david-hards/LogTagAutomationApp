@@ -23,7 +23,7 @@ namespace LogTagAutomationApp.Views
 
         public static void DisplayTestResults(Test test)
         {
-            Debug.WriteLine($"ucTestResult.DisplayTestResults: count is {TestController.NumOfLoggers}");
+            //Debug.WriteLine($"ucTestResult.DisplayTestResults: count is {TestController.NumOfLoggers}");
             if (test == null)
             {
                 return;

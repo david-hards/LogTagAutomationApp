@@ -62,7 +62,7 @@ namespace LogTagAutomationApp.Controllers
             // Check if the file exists
             if (!File.Exists(filePath))
             {
-                Debug.WriteLine($"File '{filePath}' does not exist.");
+                Debug.WriteLine($"RenameToCSV: File '{filePath}' does not exist.");
                 return null;
             }
 
@@ -99,7 +99,7 @@ namespace LogTagAutomationApp.Controllers
             // Check if the file exists
             if (!File.Exists(filePath))
             {
-                Debug.WriteLine($"File '{filePath}' does not exist.");
+                Debug.WriteLine($"RenameToBDF: File '{filePath}' does not exist.");
                 return null;
             }
 
@@ -147,17 +147,17 @@ namespace LogTagAutomationApp.Controllers
                         string fileName = Path.GetFileName(filePath);
                         string destinationFilePath = Path.Combine(toPath, fileName);
                         File.Copy(filePath, destinationFilePath, true);
-                        Debug.WriteLine($"Copied '{filePath}' to '{destinationFilePath}'");
+                        //Debug.WriteLine($"Copied '{filePath}' to '{destinationFilePath}'");
                     }
                     else
                     {
-                        Debug.WriteLine($"File '{filePath}' does not exist.");
+                        Debug.WriteLine($"CopyFilesToFolde: File '{filePath}' does not exist.");
                     }
                 }
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"An error occurred: {ex.Message}");
+                Debug.WriteLine($"CopyFilesToFolde: An error occurred: {ex.Message}");
             }
         }
     }

@@ -25,5 +25,17 @@ namespace LogTagAutomationApp.Controllers
             UserName = username;
             return true;
         }
+
+        public static bool SetDefaultTestFolder(string path)
+        {
+            if (FileController.SetDefaultTestFolder(path))
+            {
+                MainOutputFolder = path;
+                return true;
+            };
+            return false;
+
+        }
+
     }
 }

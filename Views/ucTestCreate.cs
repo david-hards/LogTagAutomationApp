@@ -209,7 +209,7 @@ namespace LogTagAutomationApp.Views
             {
                 // Set Dostmann file path
                 FileController.DostmannPath = listBoxDostmann.Items.Count > 0 ? listBoxDostmann.Items[0].ToString() : null;
-                Debug.WriteLine($"TESTING : Dostmann path set to {FileController.DostmannPath}");
+                //Debug.WriteLine($"TESTING : Dostmann path set to {FileController.DostmannPath}");
                 // Set LTD file paths
                 FileController.LTDPaths = listBoxLTD.Items.Cast<string>().ToArray();
 

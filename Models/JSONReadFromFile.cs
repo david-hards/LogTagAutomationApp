@@ -2,9 +2,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
-using System;
 using System.Diagnostics;
-using static System.Net.Mime.MediaTypeNames;
 using System.IO;
 using System.Windows.Forms;
 
@@ -14,13 +12,10 @@ namespace LogTagAutomationApp.Models
     {
         public static List<Logger> ReadLoggerProfilesFromFile()
         {
-            Debug.WriteLine("RLAFF: Reading logger profiles");
-            //return null;
-
             var file = "loggers.json"; //SessionController.LoggerProfileFileName;
             if (!File.Exists(file))
             {
-                Debug.WriteLine($"{file} file not found.");
+                Debug.WriteLine($"ReadLoggerProfilesFromFile: {file} file not found.");
                 return null;
             }
 
@@ -56,7 +51,7 @@ namespace LogTagAutomationApp.Models
             }
             catch
             {
-                Debug.WriteLine($"Loggers could not be loaded from {file}");
+                Debug.WriteLine($"ReadLoggerProfilesFromFile: Loggers could not be loaded from {file}");
                 return null;
             }
         }
@@ -66,7 +61,7 @@ namespace LogTagAutomationApp.Models
             var folderDirectory = SessionController.MainOutputFolder;
             var jsonFile = SessionController.TestsMasterFile;
             var fileName = Path.Combine(folderDirectory, jsonFile);
-            Debug.WriteLine($"JsonReder.ReadTestsFromFile from {fileName}");
+            //Debug.WriteLine($"JsonReder.ReadTestsFromFile from {fileName}");
 
             if (!File.Exists(fileName))
             {
@@ -79,14 +74,19 @@ namespace LogTagAutomationApp.Models
 
             if (tests != null)
             {
-                Debug.WriteLine("JsonReder.ReadTestsFromFile: Tests loaded successfully.");
+                //Debug.WriteLine("JsonReder.ReadTestsFromFile: Tests loaded successfully.");
                 return tests;
             }
             else
             {
-                Debug.WriteLine("JsonReder.ReadTestsFromFile:: Failed to deserialize tests from JSON. JSON file empty");
+                Debug.WriteLine("ReadTestsFromFile: Failed to deserialize tests from JSON. JSON file empty");
                 return null;
             }
+        }
+
+        public static void ReadDefaultSettingsFromFile()
+        {
+
         }
     }
 }
