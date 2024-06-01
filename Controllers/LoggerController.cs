@@ -1,6 +1,5 @@
 ﻿using LogTagAutomationApp.Models;
 using System.Collections.Generic;
-using System.Diagnostics;
 
 namespace LogTagAutomationApp.Controllers
 {
@@ -14,7 +13,6 @@ namespace LogTagAutomationApp.Controllers
         /// </summary>
         public static void LoadLoggerProfilesFromFile()
         {
-            //Debug.WriteLine("LoadLoggerProfilesFromFile");
             LoggerProfiles = JSONReadFromFile.ReadLoggerProfilesFromFile();
         }
     }

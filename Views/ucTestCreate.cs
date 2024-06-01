@@ -1,15 +1,10 @@
 ﻿using LogTagAutomationApp.Controllers;
 using QualityAutomation.Controllers;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LogTagAutomationApp.Views
@@ -209,7 +204,6 @@ namespace LogTagAutomationApp.Views
             {
                 // Set Dostmann file path
                 FileController.DostmannPath = listBoxDostmann.Items.Count > 0 ? listBoxDostmann.Items[0].ToString() : null;
-                //Debug.WriteLine($"TESTING : Dostmann path set to {FileController.DostmannPath}");
                 // Set LTD file paths
                 FileController.LTDPaths = listBoxLTD.Items.Cast<string>().ToArray();
 

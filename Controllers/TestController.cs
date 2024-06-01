@@ -17,7 +17,6 @@ namespace LogTagAutomationApp.Controllers
         public static string BatchNumber { get; set; }
         private static string dateTested;
         private static string tester;
-        //private static string? pathToCurrentTestFolder;
 
         public static void LoadPreviousTests()
         {
@@ -25,14 +24,13 @@ namespace LogTagAutomationApp.Controllers
             CompletedTests = JSONReadFromFile.ReadTestsFromFile();
         }
 
-        public bool DeleteTest(Test test)
-        {
-            return true;
-        }
+        //public bool DeleteTest(Test test)
+        //{
+        //    return true;
+        //}
 
         public static void CreateTest() // WRAP THE FILE CHANGING IN SUCCESS BOOLS SO FILES DONT GET RENAMED AND STAY THAT WAY
         {
-            //Debug.WriteLine($"TestContoller.CreateTest");
             try
             {
                 // Get test attributes and create folders
@@ -54,17 +52,27 @@ namespace LogTagAutomationApp.Controllers
                 var dostmannResult = DostmannHandler.ExtractDostmann();
                 FileController.DostmannPath = FolderController.RenameToDBF(FileController.DostmannPath);
 
+                // Check to see if all data extractions were succesful
+                if (dostmannResult == false)
+                {
+                    MessageBox.Show("There was an error extracting the Dostmann results from the .dbf file");
+                    return;
+                }
 
                 // Generate LTD and store in objects
                 var ltdResult = LTDHandler.ExtractLTDs();
 
+                if(ltdResult != ERROR_CODES.SUCCESS)
+                {
+                    MessageBox.Show("There was an error extracting the Logger results from the .ltd file\nMake sure all loggers are updated and supported.");
+                    return;
+                }
+
                 //Create a Logger for every file dropped into the LTD drop box
                 //for (int i = 0; i < NumOfLoggers; i++)
-                Debug.WriteLine($"Number of loggers dropped into LTD textbox is {LTDHandler.LoggersWithReadings.Count}");
-                Debug.WriteLine($"LTD Read from File code success: {ltdResult}");
+                //Debug.WriteLine($"Number of loggers dropped into LTD textbox is {LTDHandler.LoggersWithReadings.Count}");
 
                 // Create a Logger for every file dropped into the LTD drop box
-                //for (int i = 0; i < LTDHandler.LoggersWithReadings.Count; i++)
                 foreach(var logger in LTDHandler.LoggersWithReadings)
                 {
                     // Ensure LoggerReadings array is not null before accessing its elements
@@ -81,18 +89,6 @@ namespace LogTagAutomationApp.Controllers
                         // Handle the case where LoggerReadings[i] is null
                         Debug.WriteLine($"LoggersWithReadings is null.");
                     }
-                }
-
-                // Check to see if all data extractions were succesful
-                if (dostmannResult == false)
-                {
-                    MessageBox.Show("There was an error extracting the Dostmann results from the .dbf file");
-                    return;
-                }
-                if (ltdResult != ERROR_CODES.SUCCESS)
-                {
-                    MessageBox.Show("There was an error extracting the Logger results from the .ltd file\nMake sure all loggers are updated and supported.");
-                    return;
                 }
 
                 Logger currentLogger = SessionController.CurrentSelectedLogger;

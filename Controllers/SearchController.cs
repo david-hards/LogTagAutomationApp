@@ -1,10 +1,12 @@
 ﻿using LogTagAutomationApp.Models;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 
 namespace LogTagAutomationApp.Controllers
 {
+    /// <summary>
+    /// Attributes to be displayed in the search list
+    /// </summary>
     internal class ListDisplay
     {
         public string Model { get; set; }
@@ -15,9 +17,12 @@ namespace LogTagAutomationApp.Controllers
         public bool Result { get; set; }
     }
 
+    /// <summary>
+    /// SearchController Class
+    /// </summary>
     internal class SearchController
     {
-        public static void Initialise() { }
+        //public static void Initialise() { }
 
         public static List<string> GetModelNames()
         {

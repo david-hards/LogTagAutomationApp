@@ -53,6 +53,11 @@ namespace LogTagAutomationApp.Controllers
             }
         }
 
+        /// <summary>
+        /// Saves default username to settings.json
+        /// </summary>
+        /// <param name="username">Name to save</param>
+        /// <returns>Value of successful save</returns>
         public static bool SaveDefaultUsernameJson(string username)
         {
             try
@@ -90,6 +95,11 @@ namespace LogTagAutomationApp.Controllers
             }
         }
 
+        /// <summary>
+        /// Sets the filepath of the default Test folder
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns>Value of successul save</returns>
         public static bool SetDefaultTestFolder(string path)
         {
             try

@@ -25,7 +25,10 @@
       "IsHumidity": true,
       "IsExternal": true,
       "MinTemp": -30,
-      "MaxTemp": 60
+      "MaxTemp": 60,
+      "Accuracies": [
+
+      ]
     },
     {
       "Model": "EV-16",

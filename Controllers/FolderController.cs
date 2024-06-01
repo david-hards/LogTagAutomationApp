@@ -8,8 +8,6 @@ namespace LogTagAutomationApp.Controllers
 {
     internal class FolderController
     {
-        //public static string TodaysFilePath;
-
         /// <summary>
         /// Creates a folder for the day's tests
         /// </summary>
