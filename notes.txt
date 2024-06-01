@@ -94,3 +94,6 @@ LTD:		?		?
  * 
  * 
  */
+
+ DOSTMANN:	Key: 9:11:04 am,			Value: 20.099
+ LTD:		Key: 02/28/2024 21:40:00,	Value: 26.381

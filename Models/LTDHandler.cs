@@ -4,19 +4,21 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 
 namespace LogTagAutomationApp.Models
 {
     public class LTDHandler
     {
         public static List<ProductInfo> LoggersWithReadings { get; set; } = new List<ProductInfo>();
+        public static List<Dictionary<string, string>> LoggersRawReadings;
 
         /// <summary>
-        /// 
+        /// Code for extracting logger info from an LTD file. Returns an SDK Error Code
         /// </summary>
         public static ERROR_CODES ExtractLTDs()
         {
+            LoggersWithReadings.Clear();
+
             foreach (var path in FileController.LTDPaths)
             {
                 ProductInfo logger = new ProductInfo();
@@ -33,7 +35,6 @@ namespace LogTagAutomationApp.Models
                     LoggersWithReadings.Add(logger);
                 }
             }
-
             return ERROR_CODES.SUCCESS;
         }
 
@@ -81,5 +82,50 @@ namespace LogTagAutomationApp.Models
             // Return the result of the operation
             return result;
         }
-    }
+
+        // This can possibly be moved into the comparison section as it doesn't need to be here? --------------------------------------
+        public static void GetLTDReadings()
+        {
+            Debug.WriteLine("GET LTDREADINGS CALLED");
+
+            LoggersRawReadings = new List<Dictionary<string, string>>();
+
+            LoggersRawReadings.Clear();
+
+
+            foreach (var logger in LoggersWithReadings)
+            {
+                Dictionary<string, string> newDict = new Dictionary<string, string>();
+
+                foreach (SensorReading reading in logger.Readings)
+                {
+                    string key = reading.TimeStamp.ToString();
+                    string value = reading.Reading[0].ToString();
+
+                    // Add key value pair to the dictionary
+                    newDict[key] = value;
+                    
+                }
+
+                LoggersRawReadings.Add(newDict);
+            }
+
+            Debug.WriteLine("TESTING LTD KVPS");
+            Debug.WriteLine($"Number of loggers in dict: {LoggersRawReadings.Count}");
+            Debug.WriteLine($"Loogerswithreadings: {LoggersWithReadings.Count}");
+
+            foreach(var logger in LoggersRawReadings)
+            {
+                Debug.WriteLine($"NEW LOGGER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                foreach (var kvp in logger)
+                {
+                    Debug.WriteLine($"Key: {kvp.Key}, Value: {kvp.Value}");
+                }
+            }
+
+            
+        }
+
+
+}
 }

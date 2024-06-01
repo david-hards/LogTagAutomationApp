@@ -18,6 +18,8 @@ namespace LogTagAutomationApp.Controllers
         private static string dateTested;
         private static string tester;
 
+        //public static Dictionary<string, string> LTDpairs;
+
         public static void LoadPreviousTests()
         {
             //Debug.WriteLine("TestController.LoadPreviousTests");
@@ -44,7 +46,7 @@ namespace LogTagAutomationApp.Controllers
                     DateOfTest = dateTested,
                     Result = false,
                     Loggers = new List<Logger>(),
-                    DostmannResults = new Dictionary<int, float>()
+                    ControlTemps = new Dictionary<int, float>()
                 };
 
                 // Rename the Dostmann file to a .csv and extract the information, then rename it back to .dbf
@@ -67,10 +69,6 @@ namespace LogTagAutomationApp.Controllers
                     MessageBox.Show("There was an error extracting the Logger results from the .ltd file\nMake sure all loggers are updated and supported.");
                     return;
                 }
-
-                //Create a Logger for every file dropped into the LTD drop box
-                //for (int i = 0; i < NumOfLoggers; i++)
-                //Debug.WriteLine($"Number of loggers dropped into LTD textbox is {LTDHandler.LoggersWithReadings.Count}");
 
                 // Create a Logger for every file dropped into the LTD drop box
                 foreach(var logger in LTDHandler.LoggersWithReadings)
@@ -108,7 +106,15 @@ namespace LogTagAutomationApp.Controllers
                 FileController.DostmannPath = FolderController.RenameToDBF(FileController.DostmannPath);
 
                 // Update UI
-                DisplayTestResults(newTest);
+                //DisplayTestResults(newTest);
+
+                //----------------------------------------------------------------------------------------------------------------
+                // Extract LTD files into separate lists of temps
+                LTDHandler.GetLTDReadings();
+
+                // Compare readings between Dostmann and Loggers
+                ComparisonHandler.GenerateResults(newTest);
+
             }
             catch
             {
@@ -117,21 +123,21 @@ namespace LogTagAutomationApp.Controllers
             }            
         }
 
-        private static void DisplayTestResults(Test test)
-        {
-            ucTestResult.DisplayTestResults(test);
-            VisibilityController.ShowUserControl("testResult");
-            foreach (var logger in LTDHandler.LoggersWithReadings)
-            {
-                Debug.WriteLine("\nNEW LOGGER\n");
-                Debug.WriteLine($"Number of readings in {logger.SerialNumber} is {logger.Readings.Count}");
-                foreach(SensorReading reading in logger.Readings)
-                {
-                    Debug.WriteLine($"At {reading.TimeStamp}, temp was {reading.Reading[0]}");
-                }
+        //private static void DisplayTestResults(Test test)
+        //{
+        //    ucTestResult.DisplayTestResults(test);
+        //    VisibilityController.ShowUserControl("testResult");
+        //    foreach (var logger in LTDHandler.LoggersWithReadings)
+        //    {
+        //        Debug.WriteLine("\nNEW LOGGER\n");
+        //        Debug.WriteLine($"Number of readings in {logger.SerialNumber} is {logger.Readings.Count}");
+        //        foreach(SensorReading reading in logger.Readings)
+        //        {
+        //            Debug.WriteLine($"At {reading.TimeStamp}, temp was {reading.Reading[0]}");
+        //        }
                 
-            }
-        }
+        //    }
+        //}
     }
 }
 

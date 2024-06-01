@@ -8,7 +8,6 @@ namespace LogTagAutomationApp.Models
     public class DostmannHandler
     {
         public static Dictionary<string, string> DostmannRawReadings { get; set; }
-        public static Dictionary<int, float> DostmannFormattedResults { get; set; }
 
         public static bool ExtractDostmann()
         {
@@ -45,7 +44,7 @@ namespace LogTagAutomationApp.Models
                     }
                 }
 
-                // Display key value pairs in Debug.WriteLine
+                //Display key value pairs in Debug.WriteLine
                 foreach (var kvp in DostmannRawReadings)
                 {
                     Debug.WriteLine($"Key: {kvp.Key}, Value: {kvp.Value}");
