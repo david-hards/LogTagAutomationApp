@@ -76,7 +76,7 @@ namespace LogTagAutomationApp.Controllers
                 // Rename the file
                 File.Move(filePath, newFilePath);
 
-                Console.WriteLine($"File '{filePath}' renamed to '{newFilePath}'");
+                //Console.WriteLine($"File '{filePath}' renamed to '{newFilePath}'");
 
                 return newFilePath;
             }
@@ -113,7 +113,7 @@ namespace LogTagAutomationApp.Controllers
                 // Rename the file
                 File.Move(filePath, newFilePath);
 
-                Console.WriteLine($"File '{filePath}' renamed to '{newFilePath}'");
+                //Console.WriteLine($"File '{filePath}' renamed to '{newFilePath}'");
 
                 return newFilePath;
             }

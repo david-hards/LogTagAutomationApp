@@ -164,6 +164,9 @@ namespace LogTagAutomationApp.Views
 
             // Resize columns to fit content
             dataGridViewSearchResults.AutoResizeColumns();
+
+            // Set AutoSizeColumnsMode to Fill to make columns fill the width of the DataGridView
+            dataGridViewSearchResults.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void dataGridViewSearchResults_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

@@ -3,6 +3,7 @@ using LogTagAutomationApp.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 
 namespace LogTagAutomationApp.Models
@@ -86,11 +87,13 @@ namespace LogTagAutomationApp.Models
         // This can possibly be moved into the comparison section as it doesn't need to be here? --------------------------------------
         public static void GetLTDReadings()
         {
-            Debug.WriteLine("GET LTDREADINGS CALLED");
-
             LoggersRawReadings = new List<Dictionary<string, string>>();
 
             LoggersRawReadings.Clear();
+
+            CultureInfo culture = new CultureInfo("en-NZ");
+            culture.DateTimeFormat.AMDesignator = "am";
+            culture.DateTimeFormat.PMDesignator = "pm";
 
 
             foreach (var logger in LoggersWithReadings)
@@ -99,7 +102,12 @@ namespace LogTagAutomationApp.Models
 
                 foreach (SensorReading reading in logger.Readings)
                 {
-                    string key = reading.TimeStamp.ToString();
+                    //string key = reading.TimeStamp.ToString();
+                    //string value = reading.Reading[0].ToString();
+
+                    var inputdate = reading.TimeStamp;
+
+                    string key = inputdate.ToString("dd/MM/yyyy h:mm:ss tt", culture);
                     string value = reading.Reading[0].ToString();
 
                     // Add key value pair to the dictionary
@@ -110,13 +118,8 @@ namespace LogTagAutomationApp.Models
                 LoggersRawReadings.Add(newDict);
             }
 
-            Debug.WriteLine("TESTING LTD KVPS");
-            Debug.WriteLine($"Number of loggers in dict: {LoggersRawReadings.Count}");
-            Debug.WriteLine($"Loogerswithreadings: {LoggersWithReadings.Count}");
-
             foreach(var logger in LoggersRawReadings)
             {
-                Debug.WriteLine($"NEW LOGGER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
                 foreach (var kvp in logger)
                 {
                     Debug.WriteLine($"Key: {kvp.Key}, Value: {kvp.Value}");

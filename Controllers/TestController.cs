@@ -22,16 +22,10 @@ namespace LogTagAutomationApp.Controllers
 
         public static void LoadPreviousTests()
         {
-            //Debug.WriteLine("TestController.LoadPreviousTests");
             CompletedTests = JSONReadFromFile.ReadTestsFromFile();
         }
 
-        //public bool DeleteTest(Test test)
-        //{
-        //    return true;
-        //}
-
-        public static void CreateTest() // WRAP THE FILE CHANGING IN SUCCESS BOOLS SO FILES DONT GET RENAMED AND STAY THAT WAY
+        public static void CreateTest()
         {
             try
             {
@@ -89,6 +83,19 @@ namespace LogTagAutomationApp.Controllers
                     }
                 }
 
+                // Update UI
+                //DisplayTestResults(newTest);
+
+                // Extract LTD files into separate lists of temps
+                LTDHandler.GetLTDReadings();
+
+                // Compare readings between Dostmann and Loggers
+                ComparisonHandler.GenerateResults(newTest);
+
+
+
+
+
                 Logger currentLogger = SessionController.CurrentSelectedLogger;
                 var pathToCurrentTestFolder = FolderController.CreateTestFolder(SessionController.MainOutputFolder, dateTested, currentLogger);
                 var pathToMasterTestFolder = SessionController.MainOutputFolder + "\\" + SessionController.TestsMasterFile;
@@ -104,22 +111,11 @@ namespace LogTagAutomationApp.Controllers
 
                 // Rename the Dostmann file back to a DBF
                 FileController.DostmannPath = FolderController.RenameToDBF(FileController.DostmannPath);
-
-                // Update UI
-                //DisplayTestResults(newTest);
-
-                //----------------------------------------------------------------------------------------------------------------
-                // Extract LTD files into separate lists of temps
-                LTDHandler.GetLTDReadings();
-
-                // Compare readings between Dostmann and Loggers
-                ComparisonHandler.GenerateResults(newTest);
-
             }
             catch
             {
                 // Rename the Dostmann file back to a DBF
-                FileController.DostmannPath = FolderController.RenameToDBF(FileController.DostmannPath);
+                FileController.DostmannPath = FolderController.RenameToDBF(FileController.DostmannPath); /////////////////////////////////
             }            
         }
 

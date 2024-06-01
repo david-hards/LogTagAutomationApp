@@ -36,7 +36,7 @@ namespace LogTagAutomationApp.Models
                     if (columns.Length >= 5)
                     {
                         // Extract column 4 and 5
-                        string key = columns[3];
+                        string key = columns[2] + " " + columns[3];
                         string value = columns[4];
 
                         // Add key value pair to the dictionary
