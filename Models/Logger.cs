@@ -16,17 +16,6 @@ namespace LogTagAutomationApp.Models
 
         public Logger() { }
 
-        //public Logger(string model, string serial, string batchNumber, bool isHumidity, bool isExternal, int minTemp, int maxTemp)
-        //{
-        //    Model = model;
-        //    SerialNumber = serial;
-        //    BatchNumber = batchNumber;
-        //    IsHumidity = isHumidity;
-        //    IsExternal = isExternal;
-        //    MinTemp = minTemp;
-        //    MaxTemp = maxTemp;
-        //}
-
         public override string ToString()
         {
             return Model; // Remove this AND change the PopulateComboBox in LoggerController if there are errors around naming.

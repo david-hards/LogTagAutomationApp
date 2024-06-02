@@ -1,116 +1,56 @@
-﻿using LogTag.SDK.LogTagIO;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 
 namespace LogTagAutomationApp.Models
 {
+    /// <summary>
+    /// Class for comparing Dostmann and Logger results, and creating a list of matches
+    /// </summary>
     public class ComparisonHandler
     {
-        public static void GenerateResults(Test test)
+        /// <summary>
+        /// Calculates a list of all results where the Dostmann and Logger have a record at the same time and puts them in a list.
+        /// </summary>
+        /// <param name="test">Accepts a tests to add the final result to</param>
+        public static void CalculateMatches(Test test)
         {
-            //var dostmannReadings = DostmannHandler.DostmannReadings;
-            Debug.WriteLine("COMPARING READINGS");
-            //Debug.WriteLine($"Dostmann has {DostmannHandler.DostmannRawReadings.Count} raw readings");
-            foreach (Logger logger in LTDHandler.ExtractedLoggers)
+            // Creates a list of Matched Loggers. This is a data type that has a serial for ID, and a list of Timestamps, dostmann, and logger temps
+            List<MatchedLogger> matchedLoggers = new List<MatchedLogger>();
+
+            // For each Logger that data has been extracted from
+            for (int i = 0; i < LTDHandler.ExtractedLoggers.Count; i++)
             {
-                Debug.WriteLine($"Logger {logger.SerialNumber} has {logger.Readings.Count} raw readings");
+                Logger logger = LTDHandler.ExtractedLoggers[i];
+                // Create a new logger to store the info in
+                MatchedLogger matchedLogger = new MatchedLogger(logger.SerialNumber, logger.Model); 
+
+                // For each reading in this logger
+                foreach (var reading in LTDHandler.ExtractedLoggers[i].Readings)
+                {
+                    // Compare it against the Dostmann records and see if there are logs taken at the same time
+                    foreach (var kvp in DostmannHandler.DostmannReadings)
+                    {
+                        // If true
+                        if (kvp.Key == reading.Key)
+                        {
+                            // Add all the data to the Matched Logger
+                            Debug.WriteLine($"MATCH AT {kvp.Key}");
+                            MatchedReading matchedReading = new MatchedReading();
+                            matchedReading.KeyTime = kvp.Key;
+                            matchedReading.ValueFromLogger = reading.Value;
+                            matchedReading.ValueFromDostmann = kvp.Value;
+                            matchedLogger.MatchedReadings.Add(matchedReading);
+                        }
+                    }
+                }
+                matchedLoggers.Add(matchedLogger);
             }
-
-            /*
-             * Foreach logger, get a matching list of dostmann/logger results
-             * Print them
-             * For testing will only be two or three
-             * In real, should be a matching result for each log taken (give or take)
-             * 
-             * From that, for each 10c step in the logger json
-             * Get an array of matching readings,
-             * Get the middle 50%
-             * ensure none stray outside the bounds
-             * if that is true
-             * Get the average variance of that 50%
-             * Save it as the logger record for that temp
-             *
-             * 
-             * 
-             */
-
-            foreach (var logger in LTDHandler.ExtractedLoggers)
-            {
-                Debug.WriteLine($"Comparing {logger.Model} to Dostmann");
-                //if (logger.RawReadings != null && logger.RawReadings.Count > 0)
-                //{
-
-                //}
-
-
-                //// New list to store matching key-value pairs
-                //List<MatchedReading> matchingReadings = new List<MatchedReading>();
-
-
-
-                //Debug.WriteLine("MATCHES!!!");
-                //Debug.WriteLine("MATCHES!!!");
-                //Debug.WriteLine("MATCHES!!!");
-                //Debug.WriteLine("MATCHES!!!");
-                //Debug.WriteLine("MATCHES!!!");
-
-                //foreach (var reading in matchingReadings)
-                //{
-                //    Debug.WriteLine($"On {reading.KeyTime} the dostmann was {reading.ValueFromDostmann} and the logger was {reading.ValueFromLogger}");
-                //}
-
-
-            }
+            //matchedLoggers.ForEach(logger => {
+            //    Debug.WriteLine($"MATCH PRINT FOR {logger.Serial}");
+            //    logger.MatchedReadings.ForEach(reading => {
+            //        Debug.WriteLine($"Reading taken on {reading.KeyTime} at {reading.ValueFromDostmann} and {reading.ValueFromLogger}");
+            //    });
+            //});
         }
     }
 }
-
-
-
-
-// This can possibly be moved into the comparison section as it doesn't need to be here? --------------------------------------
-//public static void GetLTDReadings()
-//{
-//    LoggersRawReadings = new List<Dictionary<string, string>>();
-
-//    LoggersRawReadings.Clear();
-
-//    CultureInfo culture = new CultureInfo("en-NZ");
-//    culture.DateTimeFormat.AMDesignator = "am";
-//    culture.DateTimeFormat.PMDesignator = "pm";
-
-
-//    foreach (var logger in ExtractedLoggers)
-//    {
-//        Dictionary<string, string> newDict = new Dictionary<string, string>();
-
-//        foreach (SensorReading reading in logger.Readings)
-//        {
-//            //string key = reading.TimeStamp.ToString();
-//            //string value = reading.Reading[0].ToString();
-
-//            var inputdate = reading.TimeStamp;
-
-//            string key = inputdate.ToString("dd/MM/yyyy h:mm:ss tt", culture);
-//            string value = reading.Reading[0].ToString();
-
-//            // Add key value pair to the dictionary
-//            newDict[key] = value;
-
-//        }
-
-//        LoggersRawReadings.Add(newDict);
-//    }
-
-//    foreach (var logger in LoggersRawReadings)
-//    {
-//        foreach (var kvp in logger)
-//        {
-//            Debug.WriteLine($"Key: {kvp.Key}, Value: {kvp.Value}");
-//        }
-//    }
-
-
-//}

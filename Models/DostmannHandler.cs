@@ -10,7 +10,7 @@ namespace LogTagAutomationApp.Models
 {
     public class DostmannHandler
     {
-        public static Dictionary<DateTime, double> DostmannRawReadings { get; set; }
+        public static Dictionary<DateTime, double> DostmannReadings { get; set; }
 
         public static bool ExtractDostmann()
         {
@@ -28,7 +28,7 @@ namespace LogTagAutomationApp.Models
                 string[] lines = File.ReadAllLines(filePath);
 
                 // Dictionary to store column 4 and 5 as key value pairs
-                DostmannRawReadings = new Dictionary<DateTime, double>();
+                DostmannReadings = new Dictionary<DateTime, double>();
 
                 // Skip the first line
                 string[] dataLines = lines.Skip(1).ToArray();
@@ -50,7 +50,7 @@ namespace LogTagAutomationApp.Models
                         if (float.TryParse(columns[4], out value))
                         {
                             // Add key-value pair to the dictionary
-                            DostmannRawReadings[parsedDateTime] = value;
+                            DostmannReadings[parsedDateTime] = value;
                         }
                         else
                         {
@@ -61,10 +61,10 @@ namespace LogTagAutomationApp.Models
                 }
 
                 //Display key value pairs in Debug.WriteLine // DELETE AFTER TESTING --------------------------------------------------------
-                foreach (var kvp in DostmannRawReadings)
-                {
-                    Debug.WriteLine($"DOSTMANN: Key: {kvp.Key}, Value: {kvp.Value}");
-                }
+                //foreach (var kvp in DostmannReadings)
+                //{
+                //    Debug.WriteLine($"DOSTMANN: Key: {kvp.Key}, Value: {kvp.Value}");
+                //}
 
                 return true;
             }

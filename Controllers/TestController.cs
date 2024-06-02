@@ -34,8 +34,6 @@ namespace LogTagAutomationApp.Controllers
                     TesterName = tester,
                     DateOfTest = dateTested,
                     Result = false,
-                    Loggers = new List<Logger>(),
-                    ControlTemps = new Dictionary<int, float>()
                 };
 
                 // Rename the Dostmann file to a .csv and extract the information, then rename it back to .dbf
@@ -62,7 +60,7 @@ namespace LogTagAutomationApp.Controllers
 
 
                 // Compare readings between Dostmann and Loggers
-                ComparisonHandler.GenerateResults(newTest);
+                ComparisonHandler.CalculateMatches(newTest);
 
                 
                 
