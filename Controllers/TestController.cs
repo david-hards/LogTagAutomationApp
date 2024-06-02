@@ -1,10 +1,7 @@
 ﻿using LogTag.SDK.LogTagIO;
 using LogTagAutomationApp.Models;
-using LogTagAutomationApp.Views;
-using QualityAutomation.Controllers;
 using System.Collections.Generic;
 using System;
-using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -17,8 +14,6 @@ namespace LogTagAutomationApp.Controllers
         public static string BatchNumber { get; set; }
         private static string dateTested;
         private static string tester;
-
-        //public static Dictionary<string, string> LTDpairs;
 
         public static void LoadPreviousTests()
         {
@@ -64,38 +59,13 @@ namespace LogTagAutomationApp.Controllers
                     return;
                 }
 
-                // Create a Logger for every file dropped into the LTD drop box
-                foreach(var logger in LTDHandler.LoggersWithReadings)
-                {
-                    // Ensure LoggerReadings array is not null before accessing its elements
-                    if (LTDHandler.LoggersWithReadings != null)
-                    {
-                        Logger newLogger = new Logger();
-                        newLogger.SerialNumber = logger.SerialNumber;
-                        newLogger.Model = logger.DeviceModel.ToString();
-                        newLogger.BatchNumber = BatchNumber;
-                        newTest.Loggers.Add(newLogger);
-                    }
-                    else
-                    {
-                        // Handle the case where LoggerReadings[i] is null
-                        Debug.WriteLine($"LoggersWithReadings is null.");
-                    }
-                }
 
-                // Update UI
-                //DisplayTestResults(newTest);
-
-                // Extract LTD files into separate lists of temps
-                LTDHandler.GetLTDReadings();
 
                 // Compare readings between Dostmann and Loggers
                 ComparisonHandler.GenerateResults(newTest);
 
-
-
-
-
+                
+                
                 Logger currentLogger = SessionController.CurrentSelectedLogger;
                 var pathToCurrentTestFolder = FolderController.CreateTestFolder(SessionController.MainOutputFolder, dateTested, currentLogger);
                 var pathToMasterTestFolder = SessionController.MainOutputFolder + "\\" + SessionController.TestsMasterFile;

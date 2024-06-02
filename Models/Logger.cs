@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LogTagAutomationApp.Models
 {
@@ -15,20 +12,20 @@ namespace LogTagAutomationApp.Models
         public bool IsExternal { get; set; }
         public int MinTemp { get; set; }
         public int MaxTemp { get; set; }
-        public Dictionary<int, float> Readings { get; set; } = new Dictionary<int, float>();
+        public Dictionary<DateTime, double> Readings { get; set; } = new Dictionary<DateTime, double>();
 
         public Logger() { }
 
-        public Logger(string model, string serial, string batchNumber, bool isHumidity, bool isExternal, int minTemp, int maxTemp)
-        {
-            Model = model;
-            SerialNumber = serial;
-            BatchNumber = batchNumber;
-            IsHumidity = isHumidity;
-            IsExternal = isExternal;
-            MinTemp = minTemp;
-            MaxTemp = maxTemp;
-        }
+        //public Logger(string model, string serial, string batchNumber, bool isHumidity, bool isExternal, int minTemp, int maxTemp)
+        //{
+        //    Model = model;
+        //    SerialNumber = serial;
+        //    BatchNumber = batchNumber;
+        //    IsHumidity = isHumidity;
+        //    IsExternal = isExternal;
+        //    MinTemp = minTemp;
+        //    MaxTemp = maxTemp;
+        //}
 
         public override string ToString()
         {

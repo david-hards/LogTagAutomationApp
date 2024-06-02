@@ -10,30 +10,44 @@ namespace LogTagAutomationApp.Models
 {
     public class LTDHandler
     {
-        public static List<ProductInfo> LoggersWithReadings { get; set; } = new List<ProductInfo>();
-        public static List<Dictionary<string, string>> LoggersRawReadings;
+        //public static List<ProductInfo> LoggersWithReadings { get; set; } = new List<ProductInfo>();
+        public static List<Logger> ExtractedLoggers { get; set; } = new List<Logger>();
+        //public static List<Dictionary<string, string>> LoggersRawReadings;
 
         /// <summary>
         /// Code for extracting logger info from an LTD file. Returns an SDK Error Code
         /// </summary>
         public static ERROR_CODES ExtractLTDs()
         {
-            LoggersWithReadings.Clear();
+            ExtractedLoggers.Clear();
 
             foreach (var path in FileController.LTDPaths)
             {
-                ProductInfo logger = new ProductInfo();
-                var result = RetrieveDataFromLogger(ref logger, path);
+                Logger newLogger = new Logger();
+
+                ProductInfo info = new ProductInfo();
+                var result = RetrieveDataFromLogger(ref info, path);
 
                 if( result != ERROR_CODES.SUCCESS)
                 {
-                    Debug.WriteLine($"Logger at {path} was a {result}: {logger.DeviceModel}, serial {logger.SerialNumber}");
+                    Debug.WriteLine($"Logger retrieval failure");
                     return ERROR_CODES.FAILURE;
                 }
                 else
                 {
-                    Debug.WriteLine($"Logger at {path} was a {result}: {logger.DeviceModel}, serial {logger.SerialNumber}");
-                    LoggersWithReadings.Add(logger);
+                    newLogger.Model = info.DeviceModel.ToString();
+                    newLogger.SerialNumber = info.SerialNumber;
+                    newLogger.BatchNumber = TestController.BatchNumber;
+
+                    foreach (var reading in info.Readings)
+                    {
+                        DateTime timeStamp = reading.TimeStamp;
+                        double temp = reading.Reading[0];
+                        newLogger.Readings.Add(timeStamp, temp);
+                    }
+
+                    ExtractedLoggers.Add(newLogger);
+                    Debug.WriteLine($"Logger {newLogger.SerialNumber} added to Extracted Loggers");
                 }
             }
             return ERROR_CODES.SUCCESS;
@@ -83,52 +97,5 @@ namespace LogTagAutomationApp.Models
             // Return the result of the operation
             return result;
         }
-
-        // This can possibly be moved into the comparison section as it doesn't need to be here? --------------------------------------
-        public static void GetLTDReadings()
-        {
-            LoggersRawReadings = new List<Dictionary<string, string>>();
-
-            LoggersRawReadings.Clear();
-
-            CultureInfo culture = new CultureInfo("en-NZ");
-            culture.DateTimeFormat.AMDesignator = "am";
-            culture.DateTimeFormat.PMDesignator = "pm";
-
-
-            foreach (var logger in LoggersWithReadings)
-            {
-                Dictionary<string, string> newDict = new Dictionary<string, string>();
-
-                foreach (SensorReading reading in logger.Readings)
-                {
-                    //string key = reading.TimeStamp.ToString();
-                    //string value = reading.Reading[0].ToString();
-
-                    var inputdate = reading.TimeStamp;
-
-                    string key = inputdate.ToString("dd/MM/yyyy h:mm:ss tt", culture);
-                    string value = reading.Reading[0].ToString();
-
-                    // Add key value pair to the dictionary
-                    newDict[key] = value;
-                    
-                }
-
-                LoggersRawReadings.Add(newDict);
-            }
-
-            foreach(var logger in LoggersRawReadings)
-            {
-                foreach (var kvp in logger)
-                {
-                    Debug.WriteLine($"Key: {kvp.Key}, Value: {kvp.Value}");
-                }
-            }
-
-            
-        }
-
-
-}
+    }
 }
