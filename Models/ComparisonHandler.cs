@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using LogTagAutomationApp.Controllers;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace LogTagAutomationApp.Models
@@ -45,12 +46,27 @@ namespace LogTagAutomationApp.Models
                 }
                 matchedLoggers.Add(matchedLogger);
             }
-            //matchedLoggers.ForEach(logger => {
-            //    Debug.WriteLine($"MATCH PRINT FOR {logger.Serial}");
-            //    logger.MatchedReadings.ForEach(reading => {
-            //        Debug.WriteLine($"Reading taken on {reading.KeyTime} at {reading.ValueFromDostmann} and {reading.ValueFromLogger}");
-            //    });
-            //});
+            CalculateTemps(matchedLoggers);
         }
+
+        private static void CalculateTemps(List<MatchedLogger> matchedLoggers)
+        {
+            foreach(var logger in matchedLoggers)
+            {
+                var minTemp = LoggerController.getMinTemp(logger.Model);
+                var maxTemp = LoggerController.getMaxTemp(logger.Model);
+
+                Debug.WriteLine($"Running CalculateTemps Comparison for Model {logger.Model} has min of {minTemp} and max of {maxTemp}");
+
+                for(int i = minTemp;  i <= maxTemp; i = i + 10)
+                {
+                    Debug.WriteLine($"Temp is currently {i}");
+                }
+
+            }
+
+
+        }
+
     }
 }

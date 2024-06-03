@@ -1,43 +1,149 @@
 {
   "Loggers": [
     {
-      "Model": "UTRED",
-      //"SerialNumber": "SN001",
-      //"BatchNumber": "B001",
-      "IsHumidity": false,
-      "IsExternal": false,
-      "MinTemp": -30,
-      "MaxTemp": 60
-    },
-    {
-      "Model": "SRIL",
-      //"SerialNumber": "SN002",
-      //"BatchNumber": "B002",
-      "IsHumidity": false,
-      "IsExternal": false,
-      "MinTemp": -30,
-      "MaxTemp": 60
-    },
-    {
-      "Model": "UHADO",
-      //"SerialNumber": "SN003",
-      //"BatchNumber": "B003",
-      "IsHumidity": true,
-      "IsExternal": true,
-      "MinTemp": -30,
-      "MaxTemp": 60,
-      "Accuracies": [
-
+      "Model": "UTRED", // Must be string, caps
+      "IsHumidity": false, // True or false
+      "IsExternal": false, // True or false
+      "MinTemp": -30, // Must be integer, interval of 10
+      "MaxTemp": 60, // Must be integer, interval of 10
+      "TemperatureVariances": [
+        {
+          "Temperature": -30,
+          "Variance": 0.8
+        },
+        {
+          "Temperature": -10,
+          "Variance": 0.6
+        },
+        {
+          "Temperature": 0,
+          "Variance": 0.5
+        },
+        {
+          "Temperature": 20,
+          "Variance": 0.6
+        },
+        {
+          "Temperature": 30,
+          "Variance": 0.8
+        }
       ]
     },
     {
-      "Model": "EV-16",
-      //"SerialNumber": "SN004",
-      //"BatchNumber": "B004",
-      "IsHumidity": false,
-      "IsExternal": false,
-      "MinTemp": -30,
-      "MaxTemp": 60
+      "Model": "SRIL", // Must be string, caps
+      "IsHumidity": false, // True or false
+      "IsExternal": false, // True or false
+      "MinTemp": -30, // Must be integer, interval of 10
+      "MaxTemp": 60, // Must be integer, interval of 10
+      "TemperatureVariances": [
+        {
+          "Temperature": -80,
+          "Variance": 0.8
+        },
+        {
+          "Temperature": -40,
+          "Variance": 0.6
+        },
+        {
+          "Temperature": 0,
+          "Variance": 0.5
+        },
+        {
+          "Temperature": 20,
+          "Variance": 0.6
+        },
+        {
+          "Temperature": 30,
+          "Variance": 0.8
+        }
+      ]
+    },
+    {
+      "Model": "UHADO", // Must be string, caps
+      "IsHumidity": false, // True or false
+      "IsExternal": false, // True or false
+      "MinTemp": -30, // Must be integer, interval of 10
+      "MaxTemp": 60, // Must be integer, interval of 10
+      "TemperatureVariances": [
+        {
+          "Temperature": -30,
+          "Variance": 0.8
+        },
+        {
+          "Temperature": -10,
+          "Variance": 0.6
+        },
+        {
+          "Temperature": 0,
+          "Variance": 0.5
+        },
+        {
+          "Temperature": 20,
+          "Variance": 0.6
+        },
+        {
+          "Temperature": 30,
+          "Variance": 0.8
+        }
+      ]
+    },
+    {
+      "Model": "TRIX", // Must be string, caps
+      "IsHumidity": false, // True or false
+      "IsExternal": false, // True or false
+      "MinTemp": -30, // Must be integer, interval of 10
+      "MaxTemp": 60, // Must be integer, interval of 10
+      "TemperatureVariances": [
+        {
+          "Temperature": -30,
+          "Variance": 0.8
+        },
+        {
+          "Temperature": -10,
+          "Variance": 0.6
+        },
+        {
+          "Temperature": 0,
+          "Variance": 0.5
+        },
+        {
+          "Temperature": 20,
+          "Variance": 0.6
+        },
+        {
+          "Temperature": 60,
+          "Variance": 0.8
+        }
+      ]
+    },
+    {
+      "Model": "LT5GEO", // Must be string, caps
+      "IsHumidity": false, // True or false
+      "IsExternal": false, // True or false
+      "MinTemp": -30, // Must be integer, interval of 10
+      "MaxTemp": 60, // Must be integer, interval of 10
+      "TemperatureVariances": [
+        {
+          "Temperature": -30,
+          "Variance": 0.8
+        },
+        {
+          "Temperature": -10,
+          "Variance": 0.6
+        },
+        {
+          "Temperature": 0,
+          "Variance": 0.5
+        },
+        {
+          "Temperature": 20,
+          "Variance": 0.6
+        },
+        {
+          "Temperature": 30,
+          "Variance": 0.8
+        }
+      ]
     }
   ]
 }

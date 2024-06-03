@@ -14,7 +14,7 @@ namespace LogTagAutomationApp.Models
         {
             this.Serial = serial;
             this.Model = model;
-            this.MatchedReadings = new List<MatchedReading>(); // Initialize the list here
+            this.MatchedReadings = new List<MatchedReading>();
             Model = model;
         }
     }
