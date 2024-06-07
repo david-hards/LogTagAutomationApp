@@ -38,9 +38,9 @@ namespace LogTagAutomationApp.Controllers
                 // Get the value of attributes
                 string defaultUserName = (string)jsonObj["defaultUserName"];
                 string mainOutputFolder = (string)jsonObj["mainOutputFolder"];
-                string lastLoggedInDate = (string)jsonObj["lastLoggedInDate"];
+                //string lastLoggedInDate = (string)jsonObj["lastLoggedInDate"];
                 string resultsMasterFileName = (string)jsonObj["resultsMasterFileName"];
-                string loggerProfileFileName = (string)jsonObj["loggerProfileFileName"];
+                //string loggerProfileFileName = (string)jsonObj["loggerProfileFileName"];
 
                 // Set the attributes to Session Controller
                 SessionController.SetUsername(defaultUserName);

@@ -1,11 +1,11 @@
 {
   "Loggers": [
     {
-      "Model": "UTRED", // Must be string, caps
-      "IsHumidity": false, // True or false
-      "IsExternal": false, // True or false
-      "MinTemp": -30, // Must be integer, interval of 10
-      "MaxTemp": 60, // Must be integer, interval of 10
+      "Model": "UTRED",
+      "IsHumidity": false,
+      "IsExternal": false,
+      "MinTemp": -30,
+      "MaxTemp": 60,
       "TemperatureVariances": [
         {
           "Temperature": -30,
@@ -30,11 +30,11 @@
       ]
     },
     {
-      "Model": "SRIL", // Must be string, caps
-      "IsHumidity": false, // True or false
-      "IsExternal": false, // True or false
-      "MinTemp": -30, // Must be integer, interval of 10
-      "MaxTemp": 60, // Must be integer, interval of 10
+      "Model": "SRIL",
+      "IsHumidity": false,
+      "IsExternal": false,
+      "MinTemp": -80,
+      "MaxTemp": 40,
       "TemperatureVariances": [
         {
           "Temperature": -80,
@@ -59,11 +59,11 @@
       ]
     },
     {
-      "Model": "UHADO", // Must be string, caps
-      "IsHumidity": false, // True or false
-      "IsExternal": false, // True or false
-      "MinTemp": -30, // Must be integer, interval of 10
-      "MaxTemp": 60, // Must be integer, interval of 10
+      "Model": "UAHDO",
+      "IsHumidity": true,
+      "IsExternal": false,
+      "MinTemp": -30,
+      "MaxTemp": 60,
       "TemperatureVariances": [
         {
           "Temperature": -30,
@@ -88,14 +88,14 @@
       ]
     },
     {
-      "Model": "TRIX", // Must be string, caps
-      "IsHumidity": false, // True or false
-      "IsExternal": false, // True or false
-      "MinTemp": -30, // Must be integer, interval of 10
-      "MaxTemp": 60, // Must be integer, interval of 10
+      "Model": "TRIX",
+      "IsHumidity": false,
+      "IsExternal": false,
+      "MinTemp": -30,
+      "MaxTemp": 60,
       "TemperatureVariances": [
         {
-          "Temperature": -30,
+          "Temperature": -20,
           "Variance": 0.8
         },
         {
@@ -117,11 +117,11 @@
       ]
     },
     {
-      "Model": "LT5GEO", // Must be string, caps
-      "IsHumidity": false, // True or false
-      "IsExternal": false, // True or false
-      "MinTemp": -30, // Must be integer, interval of 10
-      "MaxTemp": 60, // Must be integer, interval of 10
+      "Model": "LT5GEO",
+      "IsHumidity": false,
+      "IsExternal": false,
+      "MinTemp": -30,
+      "MaxTemp": 60,
       "TemperatureVariances": [
         {
           "Temperature": -30,

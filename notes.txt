@@ -45,24 +45,9 @@ Main Functions:
 
 
 TODO:
-- Add LTD drag and drop logic in ucStartTest(DONE)
-- Add dropbox logic for loggers in ucStartTest (DONE)
-- Default username not writing to JSON in FileController
-- ReadLastLoggedInDate when app loads (NOT NEEDED)
-- Load tests when app loads (DONE)
-- Add Logger subtypes with temp parameters or remove min and max temp entirely as they arent needed?
-- Remove top line of Dostmann before processing
-- When create test page comes up, empty all fields if possible without fucking the designer again
-- !!!!!!Add dostmann array to test!!!!!! (DONE)
-- Check if other default settings are needed, ie lastLoggedIn
-- Be careful to wipe old data when going back pages etc, to avoid duplicating loggers in lists, readings etc
-- Add completed test to TestController Completed tests
 - Fix persistence issues around going back, then reopening the same window and the same data still being displayed
 - When installed on a new pc will it default to david/desktop etc, or should i change it to working folder
-- Change Searches in search controller to be LIKE instead of exact
 - Test creation adds to master file but does not update current tests on display
-- CHECK ONLY THE TIMESTAMP, the rest is irrelevant
-- Create Temp Variance parameters in loggers.json
 
 COULD TODO:
 - Add option to upload rather than drag and drop dostmann / LTD files (NOT NEEDED)
@@ -71,31 +56,3 @@ COULD TODO:
 DRAWBACKS:
 - Can't test multiple models at the same time, too much entanglement imo
 
-
-
-
-icon back <a target="_blank" href="https://icons8.com/icon/40217/back">Back</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
-
-
-
-Dostman:	string, string
-Logger:		int,	float
-LTD:		?		?
-
-
-/*
- * Search for:
- *  - Failed tests
- *  - Specific models (to upper)
- *  - Serial numbers
- *  - Tester name
- *  - Batch number
- *  - Date of test
- * 
- * 
- */
-
-DOSTMANN:	Key: 15/03/2024 9:10:45 am,		Value: 20.931
- LTD:		Key: 02/28/2024 21:40:00,		Value: 26.381
-
-DateTime parsedDateTime = DateTime.ParseExact(dateTime, "dd/MM/yyyy h:mm:ss tt", CultureInfo.InvariantCulture);

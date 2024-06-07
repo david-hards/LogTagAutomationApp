@@ -51,7 +51,7 @@ namespace LogTagAutomationApp.Controllers
         }
 
         /// <summary>
-        /// Changes the specified file to a CSV
+        /// Changes the specified file to a CSV. No longer needed.
         /// </summary>
         /// <param name="filePath">The path of the file to change</param>
         /// <returns>The path of the changed CSV file</returns>
@@ -88,7 +88,7 @@ namespace LogTagAutomationApp.Controllers
         }
 
         /// <summary>
-        /// Changes the specified file to a DBF
+        /// Changes the specified file to a DBF. No longer needed.
         /// </summary>
         /// <param name="filePath">The path of the file to change</param>
         /// <returns>The path of the changed DBF file</returns>

@@ -198,7 +198,6 @@ namespace LogTagAutomationApp.Views
                 return;
             }
 
-
             // Try to submit test to TestController
             try
             {
@@ -225,6 +224,14 @@ namespace LogTagAutomationApp.Views
                 // Modify current Session info
                 SessionController.CurrentSelectedLogger.Model = comboBoxLoggers.SelectedItem.ToString();
             }
+        }
+
+        public void ClearScreen()
+        {
+            textBoxBatchNumber.Clear();
+            listBoxDostmann.Items.Clear();
+            listBoxLTD.Items.Clear();
+            comboBoxLoggers.SelectedIndex = -1;
         }
     }
 }

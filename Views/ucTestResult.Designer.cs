@@ -33,8 +33,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnTestResultFinish = new System.Windows.Forms.Button();
             this.dataGridViewResults = new System.Windows.Forms.DataGridView();
-            this.Setpoint = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Dostmann = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlSettingsMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResults)).BeginInit();
             this.SuspendLayout();
@@ -100,24 +98,11 @@
             // dataGridViewResults
             // 
             this.dataGridViewResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewResults.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Setpoint,
-            this.Dostmann});
             this.dataGridViewResults.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewResults.Location = new System.Drawing.Point(58, 58);
             this.dataGridViewResults.Name = "dataGridViewResults";
             this.dataGridViewResults.Size = new System.Drawing.Size(868, 560);
             this.dataGridViewResults.TabIndex = 14;
-            // 
-            // Setpoint
-            // 
-            this.Setpoint.HeaderText = "Setpoint";
-            this.Setpoint.Name = "Setpoint";
-            // 
-            // Dostmann
-            // 
-            this.Dostmann.HeaderText = "Dostmann";
-            this.Dostmann.Name = "Dostmann";
             // 
             // ucTestResult
             // 
@@ -140,7 +125,5 @@
         private System.Windows.Forms.Button btnTestResultBack;
         private System.Windows.Forms.Button btnTestResultFinish;
         private System.Windows.Forms.DataGridView dataGridViewResults;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Setpoint;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Dostmann;
     }
 }

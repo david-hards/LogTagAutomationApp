@@ -16,19 +16,10 @@ namespace LogTagAutomationApp.Views
             SetupCustomComponents();
 
             // Load logger profiles and previous tests
-            //Debug.WriteLine($"Calling FC.LoadDefaultSettings");
+            Debug.WriteLine($"Calling FC.LoadDefaultSettings");
             FileController.LoadDefaultSettings();
-            //Debug.WriteLine($"Calling FC.LoadPreviousTests");
+            Debug.WriteLine($"Calling FC.LoadPreviousTests");
             TestController.LoadPreviousTests();
-
-            //////////////////////////////////////////////////////////////////////////////// Delete after testing
-            //if (TestController.CompletedTests != null)
-            //{
-            //    foreach (Test t in TestController.CompletedTests)
-            //    {
-            //        Debug.WriteLine($"Tested on {t.DateOfTest} by {t.TesterName}. Result was {t.Result}");
-            //    }
-            //}
         }
 
         private void SetupCustomComponents()

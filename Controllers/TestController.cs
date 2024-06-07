@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System;
 using System.Linq;
 using System.Windows.Forms;
+using LogTagAutomationApp.Views;
+using System.Diagnostics;
 
 namespace LogTagAutomationApp.Controllers
 {
@@ -36,10 +38,9 @@ namespace LogTagAutomationApp.Controllers
                     Result = false,
                 };
 
-                // Rename the Dostmann file to a .csv and extract the information, then rename it back to .dbf
-                FileController.DostmannPath = FolderController.RenameToCSV(FileController.DostmannPath);
+                Debug.WriteLine($"Dostmann Path is {FileController.DostmannPath}");
+
                 var dostmannResult = DostmannHandler.ExtractDostmann();
-                FileController.DostmannPath = FolderController.RenameToDBF(FileController.DostmannPath);
 
                 // Check to see if all data extractions were succesful
                 if (dostmannResult == false)
@@ -57,19 +58,11 @@ namespace LogTagAutomationApp.Controllers
                     return;
                 }
 
-
-
                 // Compare readings between Dostmann and Loggers
                 ComparisonHandler.CalculateMatches(newTest);
 
-                
-                
                 Logger currentLogger = SessionController.CurrentSelectedLogger;
                 var pathToCurrentTestFolder = FolderController.CreateTestFolder(SessionController.MainOutputFolder, dateTested, currentLogger);
-                var pathToMasterTestFolder = SessionController.MainOutputFolder + "\\" + SessionController.TestsMasterFile;
-
-                // if some logic passes all the tests: //////////////////////////////////////////////////////////////////////////////////
-                JSONWriteToFile.AppendTestToMasterFile(pathToMasterTestFolder, newTest);
 
                 // Copy files across. Add Dostmann and LTD filepaths to a single array.
                 // This means CopyFilesToFolder will always receive an arg >= 2
@@ -87,21 +80,14 @@ namespace LogTagAutomationApp.Controllers
             }            
         }
 
-        //private static void DisplayTestResults(Test test)
-        //{
-        //    ucTestResult.DisplayTestResults(test);
-        //    VisibilityController.ShowUserControl("testResult");
-        //    foreach (var logger in LTDHandler.LoggersWithReadings)
-        //    {
-        //        Debug.WriteLine("\nNEW LOGGER\n");
-        //        Debug.WriteLine($"Number of readings in {logger.SerialNumber} is {logger.Readings.Count}");
-        //        foreach(SensorReading reading in logger.Readings)
-        //        {
-        //            Debug.WriteLine($"At {reading.TimeStamp}, temp was {reading.Reading[0]}");
-        //        }
-                
-        //    }
-        //}
+        public static void DisplayTestResults(List<MatchedLogger> matchedLoggers, Test test)
+        {
+            Debug.WriteLine("TestController.DisplayTestResults");
+            ucTestResult.DisplayTestResults(matchedLoggers, test);
+
+            var pathToMasterTestFolder = SessionController.MainOutputFolder + "\\" + SessionController.TestsMasterFile;
+            JSONWriteToFile.AppendTestToMasterFile(pathToMasterTestFolder, test);
+        }
     }
 }
 

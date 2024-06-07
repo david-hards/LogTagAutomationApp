@@ -48,7 +48,7 @@ namespace LogTagAutomationApp.Controllers
 
         public static List<Test> GetListOfTests(Search search)
         {
-            var testList = TestController.CompletedTests.ToList(); // Ensure you're working with a copy of the list
+            var testList = TestController.CompletedTests.ToList(); // Ensure I'm working with a copy of the list
 
             // Filter tests based on search criteria
             if (search.Result != null && search.Result != "All")
