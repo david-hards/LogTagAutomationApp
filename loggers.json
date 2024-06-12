@@ -1,10 +1,10 @@
 {
   "Loggers": [
     {
-      "Model": "UTRED",
+      "Model": "UTRID",
       "IsHumidity": false,
       "IsExternal": false,
-      "MinTemp": -30,
+      "MinTemp": -40,
       "MaxTemp": 60,
       "TemperatureVariances": [
         {
@@ -59,11 +59,11 @@
       ]
     },
     {
-      "Model": "UAHDO",
+      "Model": "UTRIX",
       "IsHumidity": true,
       "IsExternal": false,
       "MinTemp": -30,
-      "MaxTemp": 60,
+      "MaxTemp": 80,
       "TemperatureVariances": [
         {
           "Temperature": -30,
@@ -88,11 +88,11 @@
       ]
     },
     {
-      "Model": "TRIX",
+      "Model": "USRIC",
       "IsHumidity": false,
       "IsExternal": false,
-      "MinTemp": -30,
-      "MaxTemp": 60,
+      "MinTemp": -25,
+      "MaxTemp": 65,
       "TemperatureVariances": [
         {
           "Temperature": -20,
@@ -120,8 +120,8 @@
       "Model": "LT5GEO",
       "IsHumidity": false,
       "IsExternal": false,
-      "MinTemp": -30,
-      "MaxTemp": 60,
+      "MinTemp": -40,
+      "MaxTemp": 70,
       "TemperatureVariances": [
         {
           "Temperature": -30,

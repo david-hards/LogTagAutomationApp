@@ -3,7 +3,6 @@ using LogTagAutomationApp.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Globalization;
 using System.IO;
 
 namespace LogTagAutomationApp.Models

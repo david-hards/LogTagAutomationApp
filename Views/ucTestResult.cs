@@ -1,5 +1,4 @@
-﻿using LogTagAutomationApp.Controllers;
-using LogTagAutomationApp.Models;
+﻿using LogTagAutomationApp.Models;
 using QualityAutomation.Controllers;
 using System;
 using System.Collections.Generic;

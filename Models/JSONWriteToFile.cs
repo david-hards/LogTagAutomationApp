@@ -10,8 +10,6 @@ namespace LogTagAutomationApp.Models
     {
         public static void AppendTestToMasterFile(string filePath, Test test)
         {
-            //Debug.WriteLine($"JSONWriteToFile.AppendToMasterFile: Attempting to append test to file: {filePath}");
-
             try
             {
                 List<Test> testsList;

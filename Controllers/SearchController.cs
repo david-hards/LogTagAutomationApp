@@ -1,5 +1,6 @@
 ﻿using LogTagAutomationApp.Models;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace LogTagAutomationApp.Controllers
@@ -22,14 +23,19 @@ namespace LogTagAutomationApp.Controllers
     /// </summary>
     internal class SearchController
     {
-        //public static void Initialise() { }
-
         public static List<string> GetModelNames()
         {
             List<string> uniqueModelNames = new List<string>();
 
-            // Iterate through each completed test
+            Debug.WriteLine($"COMPLETED TESTS = {TestController.CompletedTests.Count}");
+
             foreach (var test in TestController.CompletedTests)
+            {
+                Debug.WriteLine($"Test: {test.DateOfTest} has {test.Loggers.Count} loggers");
+            }
+
+                // Iterate through each completed test
+                foreach (var test in TestController.CompletedTests)
             {
                 // Select distinct model names from loggers in the current test
                 var modelsInTest = test.Loggers.Where(logger => logger.Model != null).Select(logger => logger.Model).Distinct();

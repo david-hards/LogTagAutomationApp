@@ -6,7 +6,7 @@ namespace LogTagAutomationApp.Models
     {
         public string TesterName { get; set; }
         public string DateOfTest { get; set; }
-        public List<Logger> Loggers { get; set; }
+        public List<Logger> Loggers { get; set; } = new List<Logger>();
         public bool Result { get; set; } = false;
         // public Dictionary<double, List<double>> Readings { get; set; }
         // Dict = < temp range vale (eg -20), {-19.9, -19.9, -20.1, -19.9} >

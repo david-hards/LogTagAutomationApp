@@ -58,8 +58,18 @@ namespace LogTagAutomationApp.Controllers
                     return;
                 }
 
+                Debug.WriteLine($"LOGGERS TO ADD: {LTDHandler.ExtractedLoggers.Count}");
+
+                foreach(var logger in LTDHandler.ExtractedLoggers)
+                {
+                    newTest.Loggers.Add(logger);
+                }
+
                 // Compare readings between Dostmann and Loggers
-                ComparisonHandler.CalculateMatches(newTest);
+                if (ComparisonHandler.CalculateMatches(newTest))
+                {
+                    newTest.Result = true;
+                }
 
                 Logger currentLogger = SessionController.CurrentSelectedLogger;
                 var pathToCurrentTestFolder = FolderController.CreateTestFolder(SessionController.MainOutputFolder, dateTested, currentLogger);
@@ -71,7 +81,7 @@ namespace LogTagAutomationApp.Controllers
                 FolderController.CopyFilesToFolder(pathToCurrentTestFolder, paths);
 
                 // Rename the Dostmann file back to a DBF
-                FileController.DostmannPath = FolderController.RenameToDBF(FileController.DostmannPath);
+                //FileController.DostmannPath = FolderController.RenameToDBF(FileController.DostmannPath);
             }
             catch
             {

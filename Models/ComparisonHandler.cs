@@ -13,8 +13,10 @@ namespace LogTagAutomationApp.Models
         /// Calculates a list of all results where the Dostmann and Logger have a record at the same time and puts them in a list.
         /// </summary>
         /// <param name="test">Accepts a tests to add the final result to</param>
-        public static void CalculateMatches(Test test)
+        public static bool CalculateMatches(Test test)
         {
+            bool match = false;
+
             Debug.WriteLine($"CalculateMatches");
 
             // Creates a list of Matched Loggers. This is a data type that has a serial for ID, and a list of Timestamps, dostmann, and logger temps
@@ -49,12 +51,15 @@ namespace LogTagAutomationApp.Models
                             matchedReading.ValueFromLogger = reading.Value;
                             matchedReading.ValueFromDostmann = kvp.Value;
                             matchedLogger.MatchedReadings.Add(matchedReading);
+                            // There is a match
+                            match = true;
                         }
                     }
                 }
                 matchedLoggers.Add(matchedLogger);
             }
             CalculateTemps(matchedLoggers, test);
+            return match;
         }
 
         private static void CalculateTemps(List<MatchedLogger> matchedLoggers, Test test)
